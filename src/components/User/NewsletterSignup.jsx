@@ -70,11 +70,11 @@ const NewsletterSignup = ({ isDesktop = false }) => {
       <div className="flex mb-6">
         <div 
           onClick={handleToggle} 
-          className={`${isDesktop ? 'w-12 h-6' : 'w-6 h-6'} rounded-[999px] border border-gray-400 mr-3 flex items-center justify-center cursor-pointer`}
+          className={`${isDesktop ? 'w-6 h-6' : 'w-6 h-6'} rounded-[999px] border border-gray-400 mr-3 flex items-center justify-center cursor-pointer`}
         >
           {checked && <IoCheckmark className='w-4 h-4' />}
         </div>
-        <p className={`text-gray-500 leading-relaxed ${isDesktop ? '' : 'text-xs'}`} 
+        <p className={`text-gray-500 w-[95%] max-lg:w-[92%] leading-relaxed ${isDesktop ? '' : 'text-xs'}`} 
            style={isDesktop ? {fontSize: '0.7rem'} : {}}>
           By joining, you agree to GUESS List{' '}
           <a href="#" className="underline">Terms & Conditions</a>. 
