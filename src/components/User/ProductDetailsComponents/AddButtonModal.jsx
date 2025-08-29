@@ -18,16 +18,17 @@ const AddButtonModal = ({ product, isOpen, onClose, onSuccess }) => {
         size: selectedSize
       };
 
+      // addItem now automatically shows the dropdown
       dispatch(addItem(productToAdd));
 
-      onSuccess(); // Show toast
+      onSuccess(); 
 
       setTimeout(() => onClose(), 300);
 
       setSelectedColor(null);
       setSelectedSize(null);
     }
-  }, [selectedColor, selectedSize]);
+  }, [selectedColor, selectedSize, isOpen, product, dispatch, onSuccess, onClose]);
 
   if (!isOpen) return null;
 

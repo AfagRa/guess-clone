@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router"
 import { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import FilterSidebar from "../../components/User/ProductsPageComponents/FilterSidebar"
 import ProductGrid from "../../components/User/ProductsPageComponents/ProductGrid"
 import CategoryHeader from "../../components/User/ProductsPageComponents/CategoryHeader"
@@ -9,6 +10,12 @@ import { products } from "../../data/products"
 const ProductsPage = () => {
   const params = useParams()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  
+  // Get basket state from Redux instead of local state
+  const basketItems = useSelector(state => state.basket.items)
+  const showBasketDropdown = useSelector(state => state.basket.showDropdown)
+  
   const path = [params.main, ...params['*'].split('/')]
   const [maincat, subcat, ...rest] = path
 
@@ -34,17 +41,15 @@ const ProductsPage = () => {
   useEffect(() => {
     const urlPathLength = path.length
     
-    // If /women/apparel -> redirect to /women/apparel/view-all
     if (urlPathLength === 2) {
-      navigate(`/${maincat}/${subcat}/view-all`, { replace: true })
+      navigate(`/${maincat}/${subcat}/view-all`)
       return
     }
     
-    // If /women/apparel/jeans-denim -> redirect to /women/apparel/jeans-denim/view-all
     if (urlPathLength === 3 && path[2] !== 'view-all') {
       const item = catlist.find(c => c.slug === path[2])
       if (item && item.subcategories && item.subcategories.length > 0) {
-        navigate(`/${maincat}/${subcat}/${path[2]}/view-all`, { replace: true })
+        navigate(`/${maincat}/${subcat}/${path[2]}/view-all`)
         return
       }
     }

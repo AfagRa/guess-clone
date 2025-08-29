@@ -29,35 +29,37 @@ export const products = [
     ],
     imagesByColor: {
       beige: [
-        "https://img.guess.com/image/upload/f_auto,q_auto:best,w_600/v1/NA/Style/ECOMM/W5BP42KACM2-G66B.jpg",
-        "https://img.guess.com/image/upload/f_auto,q_auto:best,w_600/v1/NA/Style/ECOMM/W5BP42KACM2-G66B-ALT1.jpg",
-        "https://placehold.co/600x800/DDD6CE/000000?text=Beige+3",
-        "https://placehold.co/600x800/DDD6CE/000000?text=Beige+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G1K8.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G1K8-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G1K8-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G1K8-ALT3.jpg"
       ],
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=White+2",
-        "https://placehold.co/600x800/FFFFFF/000000?text=White+3",
-        "https://placehold.co/600x800/FFFFFF/000000?text=White+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G012.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G012-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G012-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-G012-ALT3.jpg"
       ],
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Black+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-JBLK-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-JBLK-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-JBLK-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-JBLK-ALT4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BP37KACM2-JBLK-ALT5.jpg"
       ]
     }
   },
   {
     id: "2",
-    name: "Guess Originals Denim Jumpsuit",
+    name: "Elsie Tweed and Denim Dress",
     slug: "guess-originals-denim-jumpsuit",
     gender: "women",
     categoryPath: ["women", "apparel", "jumpsuits"],
     price: 138,
     salePrice: 110.40,
     percentageOff: 70,
-    colors: ["indigo", "black"],
+    colors: ["white", "blue"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Denim"],
     material: "98% Cotton, 2% Elastane",
@@ -76,17 +78,22 @@ export const products = [
       "98% Cotton, 2% Elastane"
     ],
     imagesByColor: {
-      indigo: [
-        "https://placehold.co/600x800/3A4F6B/FFFFFF?text=Jumpsuit+Indigo+1",
-        "https://placehold.co/600x800/3A4F6B/FFFFFF?text=Jumpsuit+Indigo+2",
-        "https://placehold.co/600x800/3A4F6B/FFFFFF?text=Jumpsuit+Indigo+3",
-        "https://placehold.co/600x800/3A4F6B/FFFFFF?text=Jumpsuit+Indigo+4"
+      white: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-F0ED.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-F0ED-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-F0ED-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-F0ED-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-F0ED-ALT4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-F0ED-ALT5.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-F0ED-ALT6.jpg"
       ],
-      black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jumpsuit+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jumpsuit+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jumpsuit+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jumpsuit+Black+4"
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-FBAX.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-FBAX-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-FBAX-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-FBAX-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-FBAX-ALT4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GK77WH610-FBAX-ALT5.jpg"
       ]
     }
   },
@@ -118,22 +125,23 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+2",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+3",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G018.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G018-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G018-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G018-ALT3.jpg"
       ],
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Black+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-JBLK-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-JBLK-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-JBLK-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-JBLK-ALT4.jpg"
       ],
       navy: [
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=T-shirt+Navy+1",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=T-shirt+Navy+2",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=T-shirt+Navy+3",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=T-shirt+Navy+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G9I4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G9I4-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G9I4-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z5RI10I3Z14-G9I4-ALT3.jpg"
       ]
     }
   },
@@ -146,7 +154,7 @@ export const products = [
     price: 88,
     salePrice: null,
     percentageOff: 0,
-    colors: ["black", "red", "tan"],
+    colors: ["neutral"],
     sizes: ["OS"],
     tags: ["New Arrival", "Accessories"],
     material: "100% Polyurethane",
@@ -163,23 +171,11 @@ export const products = [
       "Adjustable crossbody strap"
     ],
     imagesByColor: {
-      black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bag+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bag+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bag+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bag+Black+4"
-      ],
-      red: [
-        "https://placehold.co/600x800/FF0000/FFFFFF?text=Bag+Red+1",
-        "https://placehold.co/600x800/FF0000/FFFFFF?text=Bag+Red+2",
-        "https://placehold.co/600x800/FF0000/FFFFFF?text=Bag+Red+3",
-        "https://placehold.co/600x800/FF0000/FFFFFF?text=Bag+Red+4"
-      ],
-      tan: [
-        "https://placehold.co/600x800/D2B48C/000000?text=Bag+Tan+1",
-        "https://placehold.co/600x800/D2B48C/000000?text=Bag+Tan+2",
-        "https://placehold.co/600x800/D2B48C/000000?text=Bag+Tan+3",
-        "https://placehold.co/600x800/D2B48C/000000?text=Bag+Tan+4"
+      neutral: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/KO951501-NAT.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/KO951501-NAT-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/KO951501-NAT-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/KO951501-NAT-ALT4.jpg"
       ]
     }
   },
@@ -192,7 +188,7 @@ export const products = [
     price: 108,
     salePrice: 86.40,
     percentageOff: 20,
-    colors: ["dark-wash", "light-wash"],
+    colors: ["blue"],
     sizes: ["28x30", "30x32", "32x32", "34x34"],
     tags: ["Denim", "Bestseller"],
     material: "99% Cotton, 1% Elastane",
@@ -209,17 +205,13 @@ export const products = [
       "Stretch denim for comfort"
     ],
     imagesByColor: {
-      "dark-wash": [
-        "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+1",
-        "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+2",
-        "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+3",
-        "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+4"
-      ],
-      "light-wash": [
-        "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+1",
-        "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+2",
-        "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+3",
-        "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+4"
+      "blue": [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBBAS23047G-RGRI.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBBAS23047G-RGRI-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBBAS23047G-RGRI-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBBAS23047G-RGRI-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBBAS23047G-RGRI-ALT4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBBAS23047G-RGRI-ALT5.jpg"
       ]
     }
   },
@@ -232,7 +224,7 @@ export const products = [
     price: 120,
     salePrice: null,
     percentageOff: 0,
-    colors: ["black", "off-white"],
+    colors: ["black", "white"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Dressy"],
     material: "50% Viscose, 28% Polyester, 22% Nylon",
@@ -251,16 +243,18 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-JBLK-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-JBLK-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-JBLK-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-JBLK-ALT4.jpg"
       ],
-      "off-white": [
-        "https://placehold.co/600x800/F5F5DC/000000?text=Dress+Off-White+1",
-        "https://placehold.co/600x800/F5F5DC/000000?text=Dress+Off-White+2",
-        "https://placehold.co/600x800/F5F5DC/000000?text=Dress+Off-White+3",
-        "https://placehold.co/600x800/F5F5DC/000000?text=Dress+Off-White+4"
+      white: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-G1O6.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-G1O6-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-G1O6-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-G1O6-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YK44Z2XY0-G1O6-ALT4.jpg"
       ]
     }
   },
@@ -290,16 +284,14 @@ export const products = [
     ],
     imagesByColor: {
       brown: [
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Belt+Brown+1",
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Belt+Brown+2",
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Belt+Brown+3",
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Belt+Brown+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ17L0WS0-G1EB.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ17L0WS0-G1EB-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ17L0WS0-G1EB-ALT2.jpg"
       ],
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ17L0WS0-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ17L0WS0-JBLK-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ17L0WS0-JBLK-ALT2.jpg"
       ]
     }
   },
@@ -312,7 +304,7 @@ export const products = [
     price: 98,
     salePrice: 78.40,
     percentageOff: 20,
-    colors: ["medium-wash", "black"],
+    colors: ["blue", "black"],
     sizes: ["24", "26", "28", "30"],
     tags: ["Denim", "Bestseller"],
     material: "91% Cotton, 6% Elasterell-P, 3% Elastane",
@@ -329,17 +321,26 @@ export const products = [
       "Zip fly with button closure"
     ],
     imagesByColor: {
-      "medium-wash": [
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Jeans+Medium+Wash+1",
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Jeans+Medium+Wash+2",
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Jeans+Medium+Wash+3",
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Jeans+Medium+Wash+4"
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR-ALT4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR-ALT5.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR-ALT6.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-D4IR-ALT7.jpg",
       ],
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT5.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT6.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT7.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YA92D5CB1-BL4O-ALT8.jpg",
       ]
     }
   },
@@ -352,7 +353,7 @@ export const products = [
     price: 89,
     salePrice: null,
     percentageOff: 0,
-    colors: ["grey", "black", "forest-green"],
+    colors: ["grey", "black"],
     sizes: ["S", "M", "L", "XL"],
     tags: ["New Arrival", "Casual"],
     material: "80% Cotton, 20% Polyester",
@@ -371,22 +372,19 @@ export const products = [
     ],
     imagesByColor: {
       grey: [
-        "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+1",
-        "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+2",
-        "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+3",
-        "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-H90Z.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-H90Z-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-H90Z-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-H90Z-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-H90Z-ALT4.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-H90Z-ALT5.jpg"
       ],
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Hoodie+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Hoodie+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Hoodie+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Hoodie+Black+4"
-      ],
-      "forest-green": [
-        "https://placehold.co/600x800/228B22/FFFFFF?text=Hoodie+Green+1",
-        "https://placehold.co/600x800/228B22/FFFFFF?text=Hoodie+Green+2",
-        "https://placehold.co/600x800/228B22/FFFFFF?text=Hoodie+Green+3",
-        "https://placehold.co/600x800/228B22/FFFFFF?text=Hoodie+Green+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-JBLK-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-JBLK-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-JBLK-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ04KC811-JBLK-ALT4.jpg",
       ]
     }
   },
@@ -399,7 +397,7 @@ export const products = [
     price: 30,
     salePrice: 24.00,
     percentageOff: 20,
-    colors: ["white", "black", "navy"],
+    colors: ["beige", "black", "blue"],
     sizes: ["OS"],
     tags: ["Accessories", "Bestseller"],
     material: "100% Cotton",
@@ -415,23 +413,23 @@ export const products = [
       "Six-panel construction"
     ],
     imagesByColor: {
-      white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Cap+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Cap+White+2",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Cap+White+3",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Cap+White+4"
+      beige: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-G053.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-G053-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-G053-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-G053-ALT3.jpg"
       ],
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-JBLK-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-JBLK-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-JBLK-ALT3.jpg"
       ],
-      navy: [
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Cap+Navy+1",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Cap+Navy+2",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Cap+Navy+3",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Cap+Navy+4"
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-A71W.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-A71W-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-A71W-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YZ00WF8V1-A71W-ALT3.jpg"
       ]
     }
   },
@@ -444,7 +442,7 @@ export const products = [
     price: 110,
     salePrice: 88.00,
     percentageOff: 20,
-    colors: ["light-wash", "dark-wash"],
+    colors: ["blue", "dark-wash"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Sustainable", "Denim"],
     material: "100% Cotton",
@@ -461,9 +459,9 @@ export const products = [
       "Long sleeves with button cuffs"
     ],
     imagesByColor: {
-      "light-wash": [
-        "https://placehold.co/600x800/808A95/000000?text=Jacket+Light+Wash+1",
-        "https://placehold.co/600x800/808A95/000000?text=Jacket+Light+Wash+2",
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5YGN107347A-RISW.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5YGN107347A-RISW-ALT1.jpg",
         "https://placehold.co/600x800/808A95/000000?text=Jacket+Light+Wash+3",
         "https://placehold.co/600x800/808A95/000000?text=Jacket+Light+Wash+4"
       ],
@@ -502,8 +500,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BL97K8S30-JTMU.jpg",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Puffer+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YL28WHG02-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YL28WHG02-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Puffer+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Puffer+Black+4"
       ],
@@ -530,7 +528,7 @@ export const products = [
     price: 75,
     salePrice: null,
     percentageOff: 0,
-    colors: ["gold", "silver", "black"],
+    colors: ["brown", "silver", "black"],
     sizes: ["OS"],
     tags: ["Accessories", "Classic"],
     material: "Metal and Polycarbonate",
@@ -547,9 +545,9 @@ export const products = [
       "Adjustable nose pads"
     ],
     imagesByColor: {
-      gold: [
-        "https://placehold.co/600x800/FFD700/000000?text=Sunglasses+Gold+1",
-        "https://placehold.co/600x800/FFD700/000000?text=Sunglasses+Gold+2",
+      brown: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GU5206-32G.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GU5206-32G-ALT1.jpg",
         "https://placehold.co/600x800/FFD700/000000?text=Sunglasses+Gold+3",
         "https://placehold.co/600x800/FFD700/000000?text=Sunglasses+Gold+4"
       ],
@@ -576,7 +574,7 @@ export const products = [
     price: 90,
     salePrice: 72.00,
     percentageOff: 20,
-    colors: ["pink", "black", "ivory"],
+    colors: ["multiplecolors", "black", "ivory"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["Dressy", "New Arrival"],
     material: "100% Polyester",
@@ -593,9 +591,9 @@ export const products = [
       "Unlined"
     ],
     imagesByColor: {
-      pink: [
-        "https://placehold.co/600x800/FFC0CB/000000?text=Skirt+Pink+1",
-        "https://placehold.co/600x800/FFC0CB/000000?text=Skirt+Pink+2",
+      multiplecolors: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GD64WH4S2-P0IY.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GD64WH4S2-P0IY-ALT1.jpg",
         "https://placehold.co/600x800/FFC0CB/000000?text=Skirt+Pink+3",
         "https://placehold.co/600x800/FFC0CB/000000?text=Skirt+Pink+4"
       ],
@@ -622,7 +620,7 @@ export const products = [
     price: 65,
     salePrice: null,
     percentageOff: 0,
-    colors: ["navy", "white", "red"],
+    colors: ["blackwhite", "white", "red"],
     sizes: ["S", "M", "L", "XL"],
     tags: ["New Arrival", "Casual"],
     material: "100% Cotton",
@@ -639,9 +637,9 @@ export const products = [
       "Regular fit"
     ],
     imagesByColor: {
-      navy: [
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Polo+Navy+1",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Polo+Navy+2",
+      blackwhite: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GP29KCJV1-F0E1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GP29KCJV1-F0E1-ALT1.jpg",
         "https://placehold.co/600x800/0F2746/FFFFFF?text=Polo+Navy+3",
         "https://placehold.co/600x800/0F2746/FFFFFF?text=Polo+Navy+4"
       ],
@@ -685,8 +683,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Gloves+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Gloves+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/4BGZ056283A-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/4BGZ056283A-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Gloves+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Gloves+Black+4"
       ],
@@ -725,8 +723,8 @@ export const products = [
     ],
     imagesByColor: {
       "multi-pink": [
-        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4PN63WGHC0-G7P1-ALT1.jpg",
-        "https://placehold.co/600x800/FFC0CB/000000?text=Blouse+Pink+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/4BGH129917Z-P8FB.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/4BGH129917Z-P8FB-ALT1.jpg",
         "https://placehold.co/600x800/FFC0CB/000000?text=Blouse+Pink+3",
         "https://placehold.co/600x800/FFC0CB/000000?text=Blouse+Pink+4"
       ],
@@ -747,7 +745,7 @@ export const products = [
     price: 85,
     salePrice: null,
     percentageOff: 0,
-    colors: ["khaki", "navy", "black"],
+    colors: ["green", "navy", "black"],
     sizes: ["28", "30", "32", "34", "36"],
     tags: ["Casual", "Classic"],
     material: "98% Cotton, 2% Elastane",
@@ -764,9 +762,9 @@ export const products = [
       "Back welt pockets"
     ],
     imagesByColor: {
-      khaki: [
-        "https://placehold.co/600x800/C3B091/000000?text=Chino+Khaki+1",
-        "https://placehold.co/600x800/C3B091/000000?text=Chino+Khaki+2",
+      green: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YAN2WHD51-G9D5.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5YAN2WHD51-G9D5-ALT1.jpg",
         "https://placehold.co/600x800/C3B091/000000?text=Chino+Khaki+3",
         "https://placehold.co/600x800/C3B091/000000?text=Chino+Khaki+4"
       ],
@@ -793,7 +791,7 @@ export const products = [
     price: 120,
     salePrice: 96.00,
     percentageOff: 20,
-    colors: ["brown", "black"],
+    colors: ["black", "brown"],
     sizes: ["OS"],
     tags: ["Accessories", "Bestseller"],
     material: "100% Polyurethane",
@@ -810,13 +808,13 @@ export const products = [
       "Interior zip and slip pockets"
     ],
     imagesByColor: {
-      brown: [
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Tote+Brown+1",
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Tote+Brown+2",
+      black: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/SV699524-BKG.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/SV699524-BKG-ALT1.jpg",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Tote+Brown+3",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Tote+Brown+4"
       ],
-      black: [
+      brown: [
         "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Black+1",
         "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Black+2",
         "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Black+3",
@@ -851,8 +849,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Sweatshirt+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Sweatshirt+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ10KC811-G011.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ10KC811-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Sweatshirt+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Sweatshirt+White+4"
       ],
@@ -878,7 +876,7 @@ export const products = [
     categoryPath: ["men", "shoes", "sneakers"],
     price: 110,
     salePrice: 88.00,
-    percentageOff: 20,
+    percentageOff: 20,  
     colors: ["white", "black"],
     sizes: ["US 8", "US 9", "US 10", "US 11", "US 12"],
     tags: ["New Arrival", "Shoes", "Casual"],
@@ -897,8 +895,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GMWULFRED-WHI01.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GMWULFRED-WHI01-ALT2.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+White+4"
       ],
@@ -936,8 +934,8 @@ export const products = [
     ],
     imagesByColor: {
       gold: [
-        "https://placehold.co/600x800/FFD700/000000?text=Earrings+Gold+1",
-        "https://placehold.co/600x800/FFD700/000000?text=Earrings+Gold+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/JUBE05151JW-YGWH.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/JUBE05151JW-YGWH-ALT2.jpg",
         "https://placehold.co/600x800/FFD700/000000?text=Earrings+Gold+3",
         "https://placehold.co/600x800/FFD700/000000?text=Earrings+Gold+4"
       ],
@@ -958,7 +956,7 @@ export const products = [
     price: 85,
     salePrice: 68.00,
     percentageOff: 20,
-    colors: ["black", "camel", "white"],
+    colors: ["blue", "camel", "white"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Bestseller"],
     material: "50% Viscose, 28% Polyester, 22% Nylon",
@@ -975,9 +973,9 @@ export const products = [
       "Long sleeves"
     ],
     imagesByColor: {
-      black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cardigan+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cardigan+Black+2",
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YR55Z3LX0-FB4M.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YR55Z3LX0-FB4M-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Cardigan+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Cardigan+Black+4"
       ],
@@ -1022,8 +1020,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bomber+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bomber+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YL01WG932-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YL01WG932-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Bomber+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Bomber+Black+4"
       ],
@@ -1044,7 +1042,7 @@ export const products = [
     price: 55,
     salePrice: 44.00,
     percentageOff: 20,
-    colors: ["brown", "black"],
+    colors: ["black", "brown"],
     sizes: ["OS"],
     tags: ["Winter", "Accessories"],
     material: "100% Acrylic",
@@ -1060,13 +1058,13 @@ export const products = [
       "Rectangular shape"
     ],
     imagesByColor: {
-      brown: [
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Scarf+Brown+1",
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Scarf+Brown+2",
+      black: [
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/AW8547SIL53-COA.jpg",
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/AW8547SIL53-COA-ALT1.jpg",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Scarf+Brown+3",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Scarf+Brown+4"
       ],
-      black: [
+      brown: [
         "https://placehold.co/600x800/000000/FFFFFF?text=Scarf+Black+1",
         "https://placehold.co/600x800/000000/FFFFFF?text=Scarf+Black+2",
         "https://placehold.co/600x800/000000/FFFFFF?text=Scarf+Black+3",
@@ -1083,7 +1081,7 @@ export const products = [
     price: 110,
     salePrice: null,
     percentageOff: 0,
-    colors: ["black", "red", "royal-blue"],
+    colors: ["white", "red", "royal-blue"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Dressy"],
     material: "95% Polyester, 5% Elastane",
@@ -1100,9 +1098,9 @@ export const products = [
       "Midi length"
     ],
     imagesByColor: {
-      black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+2",
+      white: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5YGK657372A-G056.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5YGK657372A-G056-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Dress+Black+4"
       ],
@@ -1147,8 +1145,8 @@ export const products = [
     ],
     imagesByColor: {
       grey: [
-        "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+1",
-        "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YQ23K9V31-H90Z.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YQ23K9V31-H90Z-ALT2.jpg",
         "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+3",
         "https://placehold.co/600x800/808080/FFFFFF?text=Hoodie+Grey+4"
       ],
@@ -1193,8 +1191,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Wallet+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Wallet+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/31GU110015-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/31GU110015-BLA-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Wallet+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Wallet+Black+4"
       ],
@@ -1215,7 +1213,7 @@ export const products = [
     price: 70,
     salePrice: 56.00,
     percentageOff: 20,
-    colors: ["champagne", "black"],
+    colors: ["red", "black"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Dressy"],
     material: "100% Polyester",
@@ -1232,9 +1230,9 @@ export const products = [
       "Unlined"
     ],
     imagesByColor: {
-      champagne: [
-        "https://placehold.co/600x800/F7E7CE/000000?text=Skirt+Champagne+1",
-        "https://placehold.co/600x800/F7E7CE/000000?text=Skirt+Champagne+2",
+      red: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5RGD106257A-G578.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5RGD106257A-G578-ALT1.jpg",
         "https://placehold.co/600x800/F7E7CE/000000?text=Skirt+Champagne+3",
         "https://placehold.co/600x800/F7E7CE/000000?text=Skirt+Champagne+4"
       ],
@@ -1255,7 +1253,7 @@ export const products = [
     price: 80,
     salePrice: null,
     percentageOff: 0,
-    colors: ["grey", "navy", "burgundy"],
+    colors: ["blue", "navy", "burgundy"],
     sizes: ["S", "M", "L", "XL"],
     tags: ["New Arrival", "Workwear"],
     material: "100% Cotton",
@@ -1272,9 +1270,9 @@ export const products = [
       "Regular fit"
     ],
     imagesByColor: {
-      grey: [
-        "https://placehold.co/600x800/808080/FFFFFF?text=Sweater+Grey+1",
-        "https://placehold.co/600x800/808080/FFFFFF?text=Sweater+Grey+2",
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GR16Z3HM1-A71W.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GR16Z3HM1-A71W-ALT1.jpg",
         "https://placehold.co/600x800/808080/FFFFFF?text=Sweater+Grey+3",
         "https://placehold.co/600x800/808080/FFFFFF?text=Sweater+Grey+4"
       ],
@@ -1318,8 +1316,8 @@ export const products = [
     ],
     imagesByColor: {
       "black-brown": [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Reversible+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Reversible+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/BMNULOP5135-BBO.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/BMNULOP5135-BBO-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Reversible+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Reversible+4"
       ]
@@ -1334,7 +1332,7 @@ export const products = [
     price: 75,
     salePrice: null,
     percentageOff: 0,
-    colors: ["light-wash", "white"],
+    colors: ["black", "white"],
     sizes: ["24", "25", "26", "27", "28", "29", "30"],
     tags: ["Summer", "Denim"],
     material: "100% Cotton",
@@ -1351,9 +1349,9 @@ export const products = [
       "Five-pocket construction"
     ],
     imagesByColor: {
-      "light-wash": [
-        "https://placehold.co/600x800/808A95/000000?text=Shorts+Light+Wash+1",
-        "https://placehold.co/600x800/808A95/000000?text=Shorts+Light+Wash+2",
+      "black": [
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/W5GD0YD5M71-GJGE.jpg",
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/W5GD0YD5M71-GJGE-ALT1.jpg",
         "https://placehold.co/600x800/808A95/000000?text=Shorts+Light+Wash+3",
         "https://placehold.co/600x800/808A95/000000?text=Shorts+Light+Wash+4"
       ],
@@ -1392,8 +1390,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Polo+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Polo+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5RP21KCKR4-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5RP21KCKR4-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Polo+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Polo+Black+4"
       ],
@@ -1420,7 +1418,7 @@ export const products = [
     price: 95,
     salePrice: null,
     percentageOff: 0,
-    colors: ["silver", "gold"],
+    colors: ["blue", "gold"],
     sizes: ["OS"],
     tags: ["New Arrival", "Accessories", "Dressy"],
     material: "100% Polyurethane",
@@ -1437,9 +1435,9 @@ export const products = [
       "Interior slip pocket"
     ],
     imagesByColor: {
-      silver: [
-        "https://placehold.co/600x800/C0C0C0/000000?text=Clutch+Silver+1",
-        "https://placehold.co/600x800/C0C0C0/000000?text=Clutch+Silver+2",
+      blue: [
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/EG876502-BLU.jpg",
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/EG876502-BLU-ALT1.jpg",
         "https://placehold.co/600x800/C0C0C0/000000?text=Clutch+Silver+3",
         "https://placehold.co/600x800/C0C0C0/000000?text=Clutch+Silver+4"
       ],
@@ -1460,7 +1458,7 @@ export const products = [
     price: 70,
     salePrice: 56.00,
     percentageOff: 20,
-    colors: ["medium-wash", "black"],
+    colors: ["blue", "black"],
     sizes: ["24", "25", "26", "27", "28", "29", "30"],
     tags: ["Denim", "Bestseller"],
     material: "99% Cotton, 1% Elastane",
@@ -1477,9 +1475,9 @@ export const products = [
       "Mini length"
     ],
     imagesByColor: {
-      "medium-wash": [
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Skirt+Medium+Wash+1",
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Skirt+Medium+Wash+2",
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GD0QD5M4A-GJER.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GD0QD5M4A-GJER-ALT1.jpg",
         "https://placehold.co/600x800/5F7792/FFFFFF?text=Skirt+Medium+Wash+3",
         "https://placehold.co/600x800/5F7792/FFFFFF?text=Skirt+Medium+Wash+4"
       ],
@@ -1518,8 +1516,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Shirt+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Shirt+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M3RH63W7N50-G011.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M3RH63W7N50-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Shirt+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Shirt+White+4"
       ],
@@ -1531,7 +1529,7 @@ export const products = [
       ]
     }
   },
-  {
+  { 
     id: "a12",
     name: "Classic Stainless Steel Watch",
     slug: "classic-stainless-steel-watch",
@@ -1558,8 +1556,8 @@ export const products = [
     ],
     imagesByColor: {
       silver: [
-        "https://placehold.co/600x800/C0C0C0/000000?text=Watch+Silver+1",
-        "https://placehold.co/600x800/C0C0C0/000000?text=Watch+Silver+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GW0707G1-SLV.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GW0707G1-SLV-ALT2.jpg",
         "https://placehold.co/600x800/C0C0C0/000000?text=Watch+Silver+3",
         "https://placehold.co/600x800/C0C0C0/000000?text=Watch+Silver+4"
       ],
@@ -1598,8 +1596,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BI18I3Z14-G011.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5BI18I3Z14-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+4"
       ],
@@ -1626,7 +1624,7 @@ export const products = [
     price: 80,
     salePrice: 64.00,
     percentageOff: 20,
-    colors: ["charcoal", "navy", "camel"],
+    colors: ["black", "navy", "camel"],
     sizes: ["S", "M", "L", "XL"],
     tags: ["Bestseller", "Workwear"],
     material: "100% Cotton",
@@ -1643,9 +1641,9 @@ export const products = [
       "Regular fit"
     ],
     imagesByColor: {
-      charcoal: [
-        "https://placehold.co/600x800/36454F/FFFFFF?text=Sweater+Charcoal+1",
-        "https://placehold.co/600x800/36454F/FFFFFF?text=Sweater+Charcoal+2",
+      black: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/3BHR115775Z-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/3BHR115775Z-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/36454F/FFFFFF?text=Sweater+Charcoal+3",
         "https://placehold.co/600x800/36454F/FFFFFF?text=Sweater+Charcoal+4"
       ],
@@ -1690,8 +1688,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/HMTOLGP5475-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/HMTOLGP5475-BLA-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Black+4"
       ],
@@ -1712,7 +1710,7 @@ export const products = [
     price: 95,
     salePrice: 76.00,
     percentageOff: 20,
-    colors: ["black", "beige"],
+    colors: ["blue", "beige"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Workwear", "Dressy"],
     material: "95% Polyester, 5% Elastane",
@@ -1729,9 +1727,9 @@ export const products = [
       "Zip fly with hook-and-bar closure"
     ],
     imagesByColor: {
-      black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Trousers+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Trousers+Black+2",
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/V5GB00Z3D60-G7O3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/V5GB00Z3D60-G7O3-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Trousers+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Trousers+Black+4"
       ],
@@ -1752,7 +1750,7 @@ export const products = [
     price: 110,
     salePrice: null,
     percentageOff: 0,
-    colors: ["olive", "black"],
+    colors: ["white", "black"],
     sizes: ["28", "30", "32", "34", "36"],
     tags: ["New Arrival", "Casual"],
     material: "98% Cotton, 2% Elastane",
@@ -1769,9 +1767,9 @@ export const products = [
       "Zip fly with button closure"
     ],
     imagesByColor: {
-      olive: [
-        "https://placehold.co/600x800/556B2F/FFFFFF?text=Cargo+Olive+1",
-        "https://placehold.co/600x800/556B2F/FFFFFF?text=Cargo+Olive+2",
+      white: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z4YB08K9V31-SCFY.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/Z4YB08K9V31-SCFY-ALT1.jpg",
         "https://placehold.co/600x800/556B2F/FFFFFF?text=Cargo+Olive+3",
         "https://placehold.co/600x800/556B2F/FFFFFF?text=Cargo+Olive+4"
       ],
@@ -1792,7 +1790,7 @@ export const products = [
     price: 30,
     salePrice: 24.00,
     percentageOff: 20,
-    colors: ["black", "navy", "white"],
+    colors: ["beige", "navy", "white"],
     sizes: ["OS"],
     tags: ["Bestseller", "Casual"],
     material: "100% Cotton",
@@ -1809,9 +1807,9 @@ export const products = [
       "Six-panel design"
     ],
     imagesByColor: {
-      black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+2",
+      beige: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/V5GZ03WH492-FJ7S.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/V5GZ03WH492-FJ7S-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Cap+Black+4"
       ],
@@ -1856,8 +1854,8 @@ export const products = [
     ],
     imagesByColor: {
       beige: [
-        "https://placehold.co/600x800/DDD6CE/000000?text=Sweater+Beige+1",
-        "https://placehold.co/600x800/DDD6CE/000000?text=Sweater+Beige+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/4BGR385671Z-F13Q.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/4BGR385671Z-F13Q-ALT1.jpg",
         "https://placehold.co/600x800/DDD6CE/000000?text=Sweater+Beige+3",
         "https://placehold.co/600x800/DDD6CE/000000?text=Sweater+Beige+4"
       ],
@@ -1884,7 +1882,7 @@ export const products = [
     price: 105,
     salePrice: 84.00,
     percentageOff: 20,
-    colors: ["dark-wash", "medium-wash"],
+    colors: ["blue", "medium-wash"],
     sizes: ["28x30", "30x32", "32x32", "34x34", "36x34"],
     tags: ["Denim", "Bestseller"],
     material: "99% Cotton, 1% Elastane",
@@ -1901,9 +1899,9 @@ export const products = [
       "Stretch denim for comfort"
     ],
     imagesByColor: {
-      "dark-wash": [
-        "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+1",
-        "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+2",
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YA1BD5DO3-GJEW.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YA1BD5DO3-GJEW-ALT1.jpg",
         "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+3",
         "https://placehold.co/600x800/1D2C3D/FFFFFF?text=Jeans+Dark+Wash+4"
       ],
@@ -1942,8 +1940,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/QG963222-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/QG963222-BLA-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Black+4"
       ],
@@ -1982,8 +1980,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5RN58D5LF1-TKBK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5RN58D5LF1-TKBK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Black+4"
       ]
@@ -1998,7 +1996,7 @@ export const products = [
     price: 50,
     salePrice: 40.00,
     percentageOff: 20,
-    colors: ["navy", "red", "black"],
+    colors: ["white", "red", "black"],
     sizes: ["S", "M", "L", "XL"],
     tags: ["Summer", "New Arrival"],
     material: "100% Polyester",
@@ -2015,9 +2013,9 @@ export const products = [
       "Mesh lining"
     ],
     imagesByColor: {
-      navy: [
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Swim+Trunks+Navy+1",
-        "https://placehold.co/600x800/0F2746/FFFFFF?text=Swim+Trunks+Navy+2",
+      white: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/F4GT01WG282-G011.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/F4GT01WG282-G011-ALT1.jpg",
         "https://placehold.co/600x800/0F2746/FFFFFF?text=Swim+Trunks+Navy+3",
         "https://placehold.co/600x800/0F2746/FFFFFF?text=Swim+Trunks+Navy+4"
       ],
@@ -2044,7 +2042,7 @@ export const products = [
     price: 90,
     salePrice: null,
     percentageOff: 0,
-    colors: ["brown", "black"],
+    colors: ["gold", "black"],
     sizes: ["OS"],
     tags: ["Accessories", "Bestseller"],
     material: "Faux-leather strap, Metal case",
@@ -2061,9 +2059,9 @@ export const products = [
       "Buckle closure"
     ],
     imagesByColor: {
-      brown: [
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Watch+Brown+1",
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Watch+Brown+2",
+      gold: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GW0614L2-GLD.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GW0614L2-GLD-ALT2.jpg",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Watch+Brown+3",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Watch+Brown+4"
       ],
@@ -2102,8 +2100,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GI27J1314-G011.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5GI27J1314-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+White+4"
       ],
@@ -2148,8 +2146,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Loafers+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Loafers+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GMHISOKO-BLK01.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GMHISOKO-BLK01-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Loafers+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Loafers+Black+4"
       ],
@@ -2187,8 +2185,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Card+Holder+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Card+Holder+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/SG850058-CLO.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/SG850058-CLO-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Card+Holder+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Card+Holder+Black+4"
       ],
@@ -2227,8 +2225,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Top+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Top+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5GGH307315A-G053.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5GGH307315A-G053-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Top+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Top+White+4"
       ],
@@ -2267,8 +2265,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBYAS2D4T40-JAIL.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/MBYAS2D4T40-JAIL-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Jeans+Black+4"
       ],
@@ -2306,8 +2304,8 @@ export const products = [
     ],
     imagesByColor: {
       gold: [
-        "https://placehold.co/600x800/FFD700/000000?text=Hoops+Gold+1",
-        "https://placehold.co/600x800/FFD700/000000?text=Hoops+Gold+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto,fl_strip_profile,w_800,c_scale/v1/NA/Style/ECOMM/E6300391-GOLD",
+        "https://img.guess.com/image/upload/f_auto,q_auto:eco,fl_strip_profile,dpr_1.5,fl_advanced_resize,fl_progressive,w_392,c_scale/v1/NA/Style/ECOMM/E6300391-GOLD-ALT1",
         "https://placehold.co/600x800/FFD700/000000?text=Hoops+Gold+3",
         "https://placehold.co/600x800/FFD700/000000?text=Hoops+Gold+4"
       ],
@@ -2328,7 +2326,7 @@ export const products = [
     price: 160,
     salePrice: 128.00,
     percentageOff: 20,
-    colors: ["multi-plaid"],
+    colors: ["neutral"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Workwear"],
     material: "95% Polyester, 5% Elastane",
@@ -2345,9 +2343,9 @@ export const products = [
       "Front flap pockets"
     ],
     imagesByColor: {
-      "multi-plaid": [
-        "https://placehold.co/600x800/D3D3D3/000000?text=Blazer+Plaid+1",
-        "https://placehold.co/600x800/D3D3D3/000000?text=Blazer+Plaid+2",
+      neutral: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YN54WFWX2-G1L7.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YN54WFWX2-G1L7-ALT1.jpg",
         "https://placehold.co/600x800/D3D3D3/000000?text=Blazer+Plaid+3",
         "https://placehold.co/600x800/D3D3D3/000000?text=Blazer+Plaid+4"
       ]
@@ -2380,8 +2378,8 @@ export const products = [
     ],
     imagesByColor: {
       grey: [
-        "https://placehold.co/600x800/808080/FFFFFF?text=Sweatpants+Grey+1",
-        "https://placehold.co/600x800/808080/FFFFFF?text=Sweatpants+Grey+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M3BQ11KBB40-H90T.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M3BQ11KBB40-H90T-ALT1.jpg",
         "https://placehold.co/600x800/808080/FFFFFF?text=Sweatpants+Grey+3",
         "https://placehold.co/600x800/808080/FFFFFF?text=Sweatpants+Grey+4"
       ],
@@ -2426,8 +2424,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Crossbody+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Crossbody+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/EG867978-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/EG867978-BLA-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Crossbody+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Crossbody+Black+4"
       ],
@@ -2471,8 +2469,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Skirt+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Skirt+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4PD1JWF8P0-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4PD1JWF8P0-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Skirt+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Skirt+Black+4"
       ],
@@ -2511,8 +2509,8 @@ export const products = [
     ],
     imagesByColor: {
       "blue-stripe": [
-        "https://placehold.co/600x800/ADD8E6/000000?text=Shirt+Blue+Stripe+1",
-        "https://placehold.co/600x800/ADD8E6/000000?text=Shirt+Blue+Stripe+2",
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/5GHH204469Z-S77W.jpg",
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/5GHH204469Z-S77W-ALT1.jpg",
         "https://placehold.co/600x800/ADD8E6/000000?text=Shirt+Blue+Stripe+3",
         "https://placehold.co/600x800/ADD8E6/000000?text=Shirt+Blue+Stripe+4"
       ],
@@ -2551,8 +2549,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Shoulder+Bag+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Shoulder+Bag+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/ZG787972-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/ZG787972-BLA-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Shoulder+Bag+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Shoulder+Bag+Black+4"
       ],
@@ -2573,7 +2571,7 @@ export const products = [
     price: 120,
     salePrice: 96.00,
     percentageOff: 20,
-    colors: ["light-wash", "dark-wash"],
+    colors: ["blue", "dark-wash"],
     sizes: ["24", "25", "26", "27", "28", "29", "30"],
     tags: ["New Arrival", "Sustainable", "Denim"],
     material: "92% Organic Cotton, 6% Recycled Polyester, 2% Elastane",
@@ -2590,9 +2588,9 @@ export const products = [
       "Zip fly with button closure"
     ],
     imagesByColor: {
-      "light-wash": [
-        "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+1",
-        "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+2",
+      blue: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W92A27D3920-SOFI.jpg",
+        "hhttps://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W92A27D3920-SOFI-ALT1.jpg",
         "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+3",
         "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+4"
       ],
@@ -2631,8 +2629,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Graphic+T-shirt+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Graphic+T-shirt+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GI10K8FQ4-G053.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GI10K8FQ4-G053-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Graphic+T-shirt+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Graphic+T-shirt+White+4"
       ],
@@ -2676,8 +2674,8 @@ export const products = [
     ],
     imagesByColor: {
       silver: [
-        "https://placehold.co/600x800/C0C0C0/000000?text=Bracelet+Silver+1",
-        "https://placehold.co/600x800/C0C0C0/000000?text=Bracelet+Silver+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GW0900G1-SLV.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GW0900G1-SLV-ALT2.jpg",
         "https://placehold.co/600x800/C0C0C0/000000?text=Bracelet+Silver+3",
         "https://placehold.co/600x800/C0C0C0/000000?text=Bracelet+Silver+4"
       ],
@@ -2716,8 +2714,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Cami+Top+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Cami+Top+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4BH87WGIG2-F0D9.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4BH87WGIG2-F0D9-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Cami+Top+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Cami+Top+White+4"
       ],
@@ -2761,8 +2759,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/BM7792P4130-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/BM7792P4130-BLA-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Belt+Black+4"
       ],
@@ -2801,8 +2799,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Logo+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Logo+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/HMECSAP3406-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/HMECSAP3406-BLA-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Logo+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Backpack+Logo+Black+4"
       ],
@@ -2841,8 +2839,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Top+Puff+Sleeve+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Top+Puff+Sleeve+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YP34KCYR1-G011.jpg",
+        "hhttps://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YP34KCYR1-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Top+Puff+Sleeve+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Top+Puff+Sleeve+White+4"
       ],
@@ -2863,7 +2861,7 @@ export const products = [
     price: 120,
     salePrice: 96.00,
     percentageOff: 20,
-    colors: ["medium-wash"],
+    colors: ["blue"],
     sizes: ["S", "M", "L", "XL"],
     tags: ["New Arrival", "Denim"],
     material: "100% Cotton",
@@ -2880,9 +2878,9 @@ export const products = [
       "Side pockets"
     ],
     imagesByColor: {
-      "medium-wash": [
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Jacket+Denim+1",
-        "https://placehold.co/600x800/5F7792/FFFFFF?text=Jacket+Denim+2",
+      blue : [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4BN46D5HS1-GJSE.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4BN46D5HS1-GJSE-ALT1.jpg",
         "https://placehold.co/600x800/5F7792/FFFFFF?text=Jacket+Denim+3",
         "https://placehold.co/600x800/5F7792/FFFFFF?text=Jacket+Denim+4"
       ]
@@ -2897,7 +2895,7 @@ export const products = [
     price: 20,
     salePrice: 16.00,
     percentageOff: 20,
-    colors: ["silver", "gold"],
+    colors: ["gold", "silver"],
     sizes: ["OS"],
     tags: ["Accessories", "Bestseller"],
     material: "Metal",
@@ -2913,13 +2911,13 @@ export const products = [
       "Split key ring"
     ],
     imagesByColor: {
-      silver: [
-        "https://placehold.co/600x800/C0C0C0/000000?text=Keychain+Silver+1",
-        "https://placehold.co/600x800/C0C0C0/000000?text=Keychain+Silver+2",
+      gold: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/RW1595P4101-FUC.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/RW1595P4101-FUC-ALT1.jpg",
         "https://placehold.co/600x800/C0C0C0/000000?text=Keychain+Silver+3",
         "https://placehold.co/600x800/C0C0C0/000000?text=Keychain+Silver+4"
       ],
-      gold: [
+      silver: [
         "https://placehold.co/600x800/FFD700/000000?text=Keychain+Gold+1",
         "https://placehold.co/600x800/FFD700/000000?text=Keychain+Gold+2",
         "https://placehold.co/600x800/FFD700/000000?text=Keychain+Gold+3",
@@ -2936,7 +2934,7 @@ export const products = [
     price: 95,
     salePrice: null,
     percentageOff: 0,
-    colors: ["red-plaid", "blue-plaid"],
+    colors: ["white", "blue-plaid"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Casual"],
     material: "100% Cotton",
@@ -2953,9 +2951,9 @@ export const products = [
       "Self-tie belt at waist"
     ],
     imagesByColor: {
-      "red-plaid": [
-        "https://placehold.co/600x800/FF0000/FFFFFF?text=Dress+Red+Plaid+1",
-        "https://placehold.co/600x800/FF0000/FFFFFF?text=Dress+Red+Plaid+2",
+      white: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5YGK625881Z-G056.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/5YGK625881Z-G056-ALT1.jpg",
         "https://placehold.co/600x800/FF0000/FFFFFF?text=Dress+Red+Plaid+3",
         "https://placehold.co/600x800/FF0000/FFFFFF?text=Dress+Red+Plaid+4"
       ],
@@ -2994,8 +2992,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+Classic+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+Classic+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GMTURSAN-WHI01.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GMTURSAN-WHI01-ALT2.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+Classic+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Sneakers+Classic+White+4"
       ],
@@ -3033,8 +3031,8 @@ export const products = [
     ],
     imagesByColor: {
       beige: [
-        "https://placehold.co/600x800/DDD6CE/000000?text=Scarf+Beige+1",
-        "https://placehold.co/600x800/DDD6CE/000000?text=Scarf+Beige+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/AW9354POL03-STL.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/AW9354POL03-STL-ALT2.jpg",
         "https://placehold.co/600x800/DDD6CE/000000?text=Scarf+Beige+3",
         "https://placehold.co/600x800/DDD6CE/000000?text=Scarf+Beige+4"
       ],
@@ -3073,8 +3071,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Vest+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Vest+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4BL61WGLZ0-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4BL61WGLZ0-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Vest+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Vest+Black+4"
       ],
@@ -3113,8 +3111,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Faux+Leather+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Faux+Leather+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M3YL06WFHD0-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M3YL06WFHD0-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Faux+Leather+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Jacket+Faux+Leather+Black+4"
       ],
@@ -3152,8 +3150,8 @@ export const products = [
     ],
     imagesByColor: {
       gold: [
-        "https://placehold.co/600x800/FFD700/000000?text=Bracelet+Chunky+Gold+1",
-        "https://placehold.co/600x800/FFD700/000000?text=Bracelet+Chunky+Gold+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/JUBB04218JW-YG.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/JUBB04218JW-YG-ALT1.jpg",
         "https://placehold.co/600x800/FFD700/000000?text=Bracelet+Chunky+Gold+3",
         "https://placehold.co/600x800/FFD700/000000?text=Bracelet+Chunky+Gold+4"
       ],
@@ -3192,8 +3190,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Swimsuit+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Swimsuit+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/E5GJ26KC692-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/E5GJ26KC692-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Swimsuit+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Swimsuit+Black+4"
       ],
@@ -3232,8 +3230,8 @@ export const products = [
     ],
     imagesByColor: {
       grey: [
-        "https://placehold.co/600x800/808080/FFFFFF?text=Zip+Hoodie+Grey+1",
-        "https://placehold.co/600x800/808080/FFFFFF?text=Zip+Hoodie+Grey+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YQ27K9V31-H90Z.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M4YQ27K9V31-H90Z-ALT2.jpg",
         "https://placehold.co/600x800/808080/FFFFFF?text=Zip+Hoodie+Grey+3",
         "https://placehold.co/600x800/808080/FFFFFF?text=Zip+Hoodie+Grey+4"
       ],
@@ -3278,8 +3276,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Embossed+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Embossed+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/QG963222-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/QG963222-BLA-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Embossed+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Tote+Embossed+Black+4"
       ],
@@ -3318,8 +3316,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=Tank+Top+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=Tank+Top+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YP37KACM2-G011.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YP37KACM2-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Tank+Top+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Tank+Top+White+4"
       ],
@@ -3364,8 +3362,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Boots+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Boots+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GWODILIA-BLK02.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GWODILIA-BLK02-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Boots+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Boots+Black+4"
       ],
@@ -3403,8 +3401,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bucket+Hat+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Bucket+Hat+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M1RZ06W7KD0-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M1RZ06W7KD0-JBLK-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Bucket+Hat+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Bucket+Hat+Black+4"
       ],
@@ -3443,8 +3441,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Mini+Skirt+Faux+Leather+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Mini+Skirt+Faux+Leather+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4PD1JWF8P0-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4PD1JWF8P0-JBLK-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Mini+Skirt+Faux+Leather+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Mini+Skirt+Faux+Leather+Black+4"
       ],
@@ -3483,8 +3481,8 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Classic+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Classic+White+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GI23K8HM0-G011.jpg",
+        "hhttps://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GI23K8HM0-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Classic+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Classic+White+4"
       ],
@@ -3528,8 +3526,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Sunglasses+Heart+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Sunglasses+Heart+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GU00196-01B.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/GU00196-01B-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Sunglasses+Heart+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Sunglasses+Heart+Black+4"
       ],
@@ -3567,8 +3565,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Leggings+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Leggings+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/WBBA0LD4PZ0-CBL1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/WBBA0LD4PZ0-CBL1-ALT1.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Leggings+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Leggings+Black+4"
       ],
@@ -3589,7 +3587,7 @@ export const products = [
     price: 150,
     salePrice: 120.00,
     percentageOff: 20,
-    colors: ["brown", "grey"],
+    colors: ["beige", "grey"],
     sizes: ["S", "M", "L", "XL"],
     tags: ["New Arrival", "Outerwear"],
     material: "100% Polyester",
@@ -3606,9 +3604,9 @@ export const products = [
       "Side pockets with snap closure"
     ],
     imagesByColor: {
-      brown: [
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Bomber+Faux+Suede+Brown+1",
-        "https://placehold.co/600x800/A52A2A/FFFFFF?text=Bomber+Faux+Suede+Brown+2",
+      beige: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GL27WH752-G1H1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GL27WH752-G1H1-ALT1.jpg",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Bomber+Faux+Suede+Brown+3",
         "https://placehold.co/600x800/A52A2A/FFFFFF?text=Bomber+Faux+Suede+Brown+4"
       ],
@@ -3646,8 +3644,8 @@ export const products = [
     ],
     imagesByColor: {
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=Beanie+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=Beanie+Black+2",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/AM9430POL01-BLA.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/AM9430POL01-BLA-ALT2.jpg",
         "https://placehold.co/600x800/000000/FFFFFF?text=Beanie+Black+3",
         "https://placehold.co/600x800/000000/FFFFFF?text=Beanie+Black+4"
       ],
@@ -3674,7 +3672,7 @@ export const products = [
     price: 55,
     salePrice: 44.00,
     percentageOff: 20,
-    colors: ["white", "black"],
+    colors: ["white", "black", "grey"],
     sizes: ["XS", "S", "M", "L"],
     tags: ["New Arrival", "Bestseller"],
     material: "100% Cotton",
@@ -3692,16 +3690,25 @@ export const products = [
     ],
     imagesByColor: {
       white: [
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Embellished+White+1",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Embellished+White+2",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Embellished+White+3",
-        "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Embellished+White+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-G011.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-G011-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-G011-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-G011-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-G011-ALT4.jpg"
       ],
       black: [
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Embellished+Black+1",
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Embellished+Black+2",
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Embellished+Black+3",
-        "https://placehold.co/600x800/000000/FFFFFF?text=T-shirt+Embellished+Black+4"
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-JBLK.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-JBLK-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-JBLK-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-JBLK-ALT3.jpg",
+        "https://img.guess.com/image/upload/w_960,f_auto,q_auto:best,dpr_2,b_auto,c_pad/v1/NA/Style/ECOMM/W4YQ00KC811-JBLK-ALT4.jpg"
+      ],
+      grey: [
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-H90Z.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-H90Z-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-H90Z-ALT2.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-H90Z-ALT3.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W4YQ00KC811-H90Z-ALT4.jpg"
       ]
     }
   },

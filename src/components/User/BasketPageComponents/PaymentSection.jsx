@@ -7,7 +7,6 @@ const PaymentSection = ({getTotalPrice, freeGiftThreshold = 150, estimatedTax = 
   const [progressWidth, setProgressWidth] = useState(0);
   
   const subtotal = getTotalPrice()
-  const klarnaInstallment = (subtotal / 4).toFixed(2);
   const qualifiesForFreeShipping = subtotal >= freeGiftThreshold;
   const freeGiftValue = qualifiesForFreeShipping ? 0.00 : null;
   const estimatedTotal = subtotal + (estimatedTax || 0);

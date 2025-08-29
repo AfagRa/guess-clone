@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import AddButtonModal from '../ProductDetailsComponents/AddButtonModal';
 
 const ItemCard = ({ item, onNavigate }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const [showFavoriteNotification, setShowFavoriteNotification] = useState(false);
   const [showBasketNotification, setShowBasketNotification] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const currentImages = item.imagesByColor[item.colors[0]];
   const mainImage = currentImages[0];
@@ -21,6 +23,10 @@ const ItemCard = ({ item, onNavigate }) => {
 
   const handleAddClick = (e) => {
     e.stopPropagation()
+    setShowAddModal(true)
+  }
+
+  const handleAddSuccess = () => {
     setShowBasketNotification(true)
     setTimeout(() => {setShowBasketNotification(false)}, 1000)
   }
@@ -44,12 +50,12 @@ const ItemCard = ({ item, onNavigate }) => {
       )}
 
       {showBasketNotification && (
-        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gray-400 text-white px-3 py-2 flex items-center gap-1">
+        <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 bg-gray-400 text-white px-3 py-2 flex items-center shadow-lg">
           Added to the basket
         </div>
       )}
       
-      <div onClick={handleCardClick} className="flex flex-col cursor-pointer bg-white">
+      <div onClick={handleCardClick} className="flex flex-col cursor-pointer bg-white relative">
         <div 
           className="relative aspect-[3/4] overflow-hidden mb-3"
           onMouseEnter={() => setIsHovered(true)}
@@ -60,7 +66,7 @@ const ItemCard = ({ item, onNavigate }) => {
             alt={item.name}
             className="w-full h-full object-cover transition-opacity duration-300"
           />
-          <button onClick={handleAddClick} className="absolute bottom-2 right-2 bg-white rounded-md px-1 sm:px-2 py-1 text-xs sm:text-sm">
+          <button onClick={handleAddClick} className="absolute cursor-pointer bottom-2 right-2 bg-white rounded-md px-1 sm:px-2 py-1 text-xs sm:text-sm">
             Add +
           </button>
         </div>
@@ -88,7 +94,6 @@ const ItemCard = ({ item, onNavigate }) => {
             </button>
           </div>
 
-
           <div className="flex flex-wrap gap-2 mt-3">
               {item.ecoInfo && <div className="bg-gray-100 rounded-[999px] px-1 py-0.5">
                 <p className="text-[10px] font-medium text-green-700">{item.ecoInfo}</p>
@@ -100,6 +105,13 @@ const ItemCard = ({ item, onNavigate }) => {
               ))}
           </div>
         </div>
+
+        <AddButtonModal
+          product={item}
+          isOpen={showAddModal}
+          onClose={() => setShowAddModal(false)}
+          onSuccess={handleAddSuccess}
+        />
       </div>
     </>
   );

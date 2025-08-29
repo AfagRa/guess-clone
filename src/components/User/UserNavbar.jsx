@@ -6,7 +6,8 @@ import BasketDropdown from './BasketDropdown';
 import Banner from './HomePageComponents/Banner';
 import { useNavigate } from 'react-router';
 import { PiBagThin } from 'react-icons/pi';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { hideBasketDropdown, showBasketDropdown } from '../../store/basketSlice'; // Updated import
 
 const UserNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -15,12 +16,10 @@ const UserNavbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY || currentScrollY < 100) setIsVisible(true);
+      else setIsVisible(false);   
       
-      if (currentScrollY < lastScrollY || currentScrollY < 100) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
       setLastScrollY(currentScrollY);
     };
 
@@ -28,12 +27,26 @@ const UserNavbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  const navigate = useNavigate()
-
-  const [showBasket, setShowBasket] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const basketItems = useSelector(state => state.basket.items);
+  const showBasket = useSelector(state => state.basket.showDropdown);
   const totalItemsCount = basketItems.reduce((total, item) => total + item.quantity, 0);
+
+  const handleMouseEnterBasket = () => {dispatch(showBasketDropdown())}
+
+  const handleMouseLeaveBasket = () => {dispatch(hideBasketDropdown())}
+
+  useEffect(() => {
+    if (showBasket) {
+      const timer = setTimeout(() => {
+        dispatch(hideBasketDropdown());
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showBasket, dispatch]);
 
   return (
     <>
@@ -61,19 +74,23 @@ const UserNavbar = () => {
               <button className="cursor-pointer p-2">
                 <CiHeart className="w-5 h-5" />
               </button>
-              <div onClick={()=> navigate('/basket')} 
-                onMouseEnter={() => setShowBasket(true)}
-                onMouseLeave={() => setShowBasket(false)} 
-                className="cursor-pointer p-2 flex justify-center items-center"
-              >
-                <PiBagThin className="w-5 h-5 cursor-pointer" />
-                {totalItemsCount > 0 && (
-                  <span className="text-sm ml-1">
-                    {totalItemsCount > 99 ? '99+' : totalItemsCount}
-                  </span>
-                )}
+              <div className="relative">
+                <div onClick={()=> navigate('/basket')} 
+                  onMouseEnter={handleMouseEnterBasket}
+                  onMouseLeave={handleMouseLeaveBasket} 
+                  className="cursor-pointer p-2 flex justify-center items-center"
+                >
+                  <PiBagThin className="w-5 h-5 cursor-pointer" />
+                  {totalItemsCount > 0 && (
+                    <span className="text-sm ml-1">
+                      {totalItemsCount > 99 ? '99+' : totalItemsCount}
+                    </span>
+                  )}
+                </div>
+                <div onMouseEnter={handleMouseEnterBasket} onMouseLeave={handleMouseLeaveBasket}>
+                  <BasketDropdown showBasket={showBasket} />
+                </div>
               </div>
-              <BasketDropdown showBasket={showBasket} />
               <UserNavbarMobile isVisible={isVisible} />
             </div>
           </div>

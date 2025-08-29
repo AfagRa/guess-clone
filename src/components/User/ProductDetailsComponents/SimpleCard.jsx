@@ -1,19 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useSelector } from "react-redux";
 import AddButtonModal from "./AddButtonModal";
-import { toast } from "react-toastify";
 
 let globalOpenModalId = null;
 
-const SimpleCard = ({ product, height, showPrice }) => {
+const SimpleCard = ({ product, height, showPrice, onAddSuccess }) => {
   const item = product;
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const basketItems = useSelector(state => state.basket.items);
-  const isInBasket = basketItems.some(basketItem => basketItem.id === item.id);
-  const itemInBasket = basketItems.find(basketItem => basketItem.id === item.id);
 
   const currentImages = item.imagesByColor[item.colors[0]];
   const mainImage = currentImages[0];
@@ -24,10 +18,6 @@ const SimpleCard = ({ product, height, showPrice }) => {
   const handleAddClick = (e) => {
     e.stopPropagation();
 
-    if (globalOpenModalId && globalOpenModalId !== item.id) {
-      // Close previous modal if any (handled automatically in modal component)
-    }
-
     globalOpenModalId = item.id;
     setIsModalOpen(true);
   };
@@ -37,17 +27,8 @@ const SimpleCard = ({ product, height, showPrice }) => {
     setIsModalOpen(false);
   };
 
-  // Show toast on successful add
   const handleAddSuccess = () => {
-    toast.success("Product added to basket", {
-      autoClose: 3000,
-      hideProgressBar: true,
-      style: {
-        backgroundColor: "#d3d3d3",
-        color: "#000",
-        fontWeight: "bold"
-      }
-    });
+    onAddSuccess();
   };
 
   const handleCardClick = () => {
@@ -60,7 +41,6 @@ const SimpleCard = ({ product, height, showPrice }) => {
 
   const formatPrice = (price) => `${price.toFixed(2)}`;
 
-  // Close modal if another one opened
   if (globalOpenModalId && globalOpenModalId !== item.id && isModalOpen) {
     setIsModalOpen(false);
   }
@@ -104,12 +84,12 @@ const SimpleCard = ({ product, height, showPrice }) => {
               <div className="flex items-center gap-2 text-xs sm:text-sm">
                 {item.salePrice ?
                   <div className="flex items-center gap-1 sm:gap-2">
-                    <span>{formatPrice(item.salePrice)}</span>
-                    <span className="text-gray-400 line-through">{formatPrice(item.price)}</span>
-                    <span className="text-gray-400">({item.percentageOff}% Off)</span>
+                    <span>${formatPrice(item.salePrice)}</span>
+                    <span className="text-gray-400 line-through">${formatPrice(item.price)}</span>
+                    <span className="text-gray-400">(${item.percentageOff}% Off)</span>
                   </div>
                   :
-                  <span>{formatPrice(item.price)}</span>
+                  <span>${formatPrice(item.price)}</span>
                 }
               </div>
             </div>

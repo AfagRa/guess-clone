@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
 import ItemCard from "./ItemCard";
 import Pagination from "./Pagination";
-import ProductGridHeader from "./ProductGridHeader"; // ✅ new import
-import { GoChevronDown } from "react-icons/go";
+import ProductGridHeader from "./ProductGridHeader"; 
 import MobileSubHeading from "./MobileSubHeading";
 
 const ProductGrid = ({ products, categoryTitle, matchedItemsCount, onNavigate,  
