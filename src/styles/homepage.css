@@ -1,0 +1,66 @@
+.overflow-x-scroll::-webkit-scrollbar {
+    display: none;
+}
+.overflow-x-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.simplebar-track.simplebar-horizontal {
+    width: 40% !important;
+    left: 30%; 
+    height: 10px !important;
+    background-color: #e5e7eb;
+    border-radius: 999px;
+    position: absolute !important;
+    overflow: hidden;
+}
+
+.simplebar-track.simplebar-horizontal::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #e5e7eb; 
+    border-radius: 999px;
+    top: 0;
+    left: 0;
+}
+
+.simplebar-scrollbar::before {
+    background-color: #9ca3af;
+    height: 100% !important;
+    width: 150% !important;
+    margin: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    border-radius: 999px;
+}
+
+@media (min-width: 768px) {
+    .gallery-container {
+    overflow: hidden !important;
+    }
+    .gallery-container .simplebar-scrollbar {
+    display: none !important;
+    }
+    .gallery-container .simplebar-track.simplebar-horizontal {
+    display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .simplebar-track.simplebar-horizontal {
+    width: 60% !important;
+    left: 20% !important;
+    }
+    
+    .gallery-container {
+    overflow: auto !important;
+    }
+    .gallery-container .simplebar-scrollbar {
+    display: block !important;
+    }
+}
