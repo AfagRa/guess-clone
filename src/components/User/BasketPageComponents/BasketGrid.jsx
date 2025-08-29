@@ -2,25 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, deleteItem, moveToFavorites } from '../../../store/basketSlice';
 import BasketItem from './BasketItem';
 
-
 const BasketGrid = () => {
   const dispatch = useDispatch();
   const basketItems = useSelector(state => state.basket.items);
 
-  const handleQuantityChange = (productId, newQuantity) => {
+  const handleQuantityChange = (productId, color, size, newQuantity) => {
     if (newQuantity <= 0) {
-      dispatch(deleteItem(productId));
+      dispatch(deleteItem({ id: productId, color, size }));
     } else {
-      dispatch(updateQuantity({ id: productId, quantity: newQuantity }));
+      dispatch(updateQuantity({ id: productId, color, size, quantity: newQuantity }));
     }
   };
 
-  const handleRemove = (productId) => {
-    dispatch(deleteItem(productId));
+  const handleRemove = (productId, color, size) => {
+    dispatch(deleteItem({ id: productId, color, size }));
   };
 
-  const handleMoveToFavorites = (productId) => {
-    dispatch(moveToFavorites(productId));
+  const handleMoveToFavorites = (productId, color, size) => {
+    dispatch(moveToFavorites({ id: productId, color, size }));
   };
 
   return (
@@ -33,10 +32,12 @@ const BasketGrid = () => {
         ) : (
           basketItems.map(item => (
             <BasketItem
-              key={`${item.id}-${item.color}-${item.size}`}
+              key={`${item.id}-${item.selectedColor || item.color}-${item.selectedSize || item.size}`}
               product={item}
               basketItem={item}
               initialQuantity={item.quantity}
+              selectedColor={item.selectedColor || item.color}
+              selectedSize={item.selectedSize || item.size}
               onQuantityChange={handleQuantityChange}
               onRemove={handleRemove}
               onMoveToFavorites={handleMoveToFavorites}
@@ -45,7 +46,7 @@ const BasketGrid = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default BasketGrid;

@@ -38,10 +38,6 @@ const OptionsModal = ({ isOpen, onClose, product, currentColor, currentSize, cur
     return colorMap[color] || color;
   };
 
-  const getStockStatus = () => {
-    return quantity > 2 ? 'Low stock' : null;
-  };
-
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       handleClose();
@@ -70,14 +66,6 @@ const OptionsModal = ({ isOpen, onClose, product, currentColor, currentSize, cur
           </div>
           <button onClick={handleClose}><MdOutlineClose size={20} /></button>
         </div>
-
-        {getStockStatus() && (
-          <div className="mb-4">
-            <span className="px-2 py-1 text-xs font-medium rounded text-blue-700">
-              {getStockStatus()}
-            </span>
-          </div>
-        )}
 
         <div className="mb-6">
           <h4 className="text-sm mb-2">

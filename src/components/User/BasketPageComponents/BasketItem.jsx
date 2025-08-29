@@ -1,12 +1,12 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { CiHeart } from 'react-icons/ci';
 import { MdOutlineClose } from 'react-icons/md';
 import OptionsModal from './OptionsModal';
 
-const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, onMoveToFavorites }) => {
+const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor, selectedSize: initialSize, onQuantityChange, onRemove, onMoveToFavorites}) => {
   const [quantity, setQuantity] = useState(initialQuantity);
-  const [selectedColor, setSelectedColor] = useState(Object.keys(product.imagesByColor)[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [selectedColor, setSelectedColor] = useState(initialColor || Object.keys(product.imagesByColor)[0]);
+  const [selectedSize, setSelectedSize] = useState(initialSize || product.sizes[0]);
   const [shippingOption, setShippingOption] = useState('ship');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,28 +16,26 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
   const handleQuantityChange = (newQuantity) => {
     if (newQuantity >= 1) {
       setQuantity(newQuantity);
-      onQuantityChange && onQuantityChange(product.id, newQuantity);
+      onQuantityChange && onQuantityChange(product.id, selectedColor, selectedSize, newQuantity);
     }
   };
 
-   const handleModalUpdate = ({ color, size, quantity: newQuantity }) => {
+  const handleModalUpdate = ({ color, size, quantity: newQuantity }) => {
     setSelectedColor(color);
     setSelectedSize(size);
     setQuantity(newQuantity);
-    onQuantityChange && onQuantityChange(product.id, newQuantity);
+    onQuantityChange && onQuantityChange(product.id, color, size, newQuantity);
   };
 
-  const openModal = () => {setIsModalOpen(true)}
+  const handleRemove = () => {
+    onRemove && onRemove(product.id, selectedColor, selectedSize);
+  };
 
-  const getStockStatus = () => {return quantity > 2 ? 'Low stock' : null}
+  const handleMoveToFavorites = () => {
+    onMoveToFavorites && onMoveToFavorites(product.id, selectedColor, selectedSize);
+  };
 
-//   const getTags = () => {
-//     const tags = [];
-//     if (product.tags.includes('New Arrival')) tags.push('New arrival');
-//     if (getStockStatus()) tags.push('Low stock');
-//     if (product.tags.includes('Sustainable')) tags.push('Sustainable');
-//     return tags;
-//   };
+  const openModal = () => { setIsModalOpen(true); };
 
   const getShippingDate = (daysFromNow) => {
     const date = new Date();
@@ -52,8 +50,8 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
   return (
     <div className="pt-5 px-10">
       <div className="flex gap-6 relative">
-        <button onClick={() => onRemove(product.id)} className="absolute top-0 right-0">
-            <MdOutlineClose size={20} />
+        <button onClick={handleRemove} className="absolute top-0 right-0">
+          <MdOutlineClose size={20} />
         </button>
         <div className="h-60 w-auto flex-shrink-0">
           <img
@@ -68,8 +66,8 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
           <h3 className="text-xs font-medium mb-3">{product.name}</h3>
 
           <div className="flex gap-2 mb-4">
-            {product.tags.map((tag, index) => (
-              <span key={index} className={`px-1.5 py-0.5 text-xs rounded-xl bg-gray-100`}>
+            {product.tags && product.tags.map((tag, index) => (
+              <span key={index} className="px-1.5 py-0.5 text-xs rounded-xl bg-gray-100">
                 {tag}
               </span>
             ))}
@@ -80,8 +78,8 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
           </span>
 
           <div className="flex items-center justify-between mb-4 py-1 border-t border-b border-gray-300">
-            <span  onClick={openModal} className="text-xs underline cursor-pointer">
-              Size: {selectedSize} {getStockStatus() && <span>- {getStockStatus()}</span>}
+            <span onClick={openModal} className="text-xs underline cursor-pointer">
+              Size: {selectedSize} 
             </span>
 
             <div className="flex items-center">
@@ -99,7 +97,7 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
           </div>
 
           {/* Move to Favorites */}
-          <button onClick={() => onMoveToFavorites(product.id)} className="flex items-center gap-2 text-xs mb-4">
+          <button onClick={handleMoveToFavorites} className="flex items-center gap-2 text-xs mb-4">
             <CiHeart size={16} />
             Move to favorites
           </button>
@@ -108,7 +106,7 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
             <label className="flex items-center gap-3">
               <input
                 type="radio"
-                name={`shipping-${product.id}`}
+                name={`shipping-${product.id}-${selectedColor}-${selectedSize}`}
                 value="ship"
                 checked={shippingOption === 'ship'}
                 onChange={(e) => setShippingOption(e.target.value)}
@@ -121,7 +119,7 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
             <label className="flex items-center gap-3">
               <input
                 type="radio"
-                name={`shipping-${product.id}`}
+                name={`shipping-${product.id}-${selectedColor}-${selectedSize}`}
                 value="pickup"
                 checked={shippingOption === 'pickup'}
                 onChange={(e) => setShippingOption(e.target.value)}
@@ -154,4 +152,4 @@ const BasketItem = ({ product, initialQuantity = 1, onQuantityChange, onRemove, 
   );
 };
 
-export default BasketItem
+export default BasketItem;
