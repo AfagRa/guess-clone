@@ -48,7 +48,7 @@ const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor,
   };
 
   return (
-    <div className="pt-5 px-10">
+    <div className="pt-5 px-4 sm:px-10">
       <div className="flex gap-6 relative">
         <button onClick={handleRemove} className="absolute top-0 right-0">
           <MdOutlineClose size={20} />
@@ -57,7 +57,7 @@ const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor,
           <img
             src={product.imagesByColor[selectedColor][0]}
             alt={product.name}
-            className="w-full h-full object-cover"
+            className="h-40 sm:w-full sm:h-full object-cover"
           />
         </div>
 
@@ -65,7 +65,7 @@ const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor,
           <h2 className="text-sm font-semibold mb-2">${currentPrice.toFixed(2)}</h2>
           <h3 className="text-xs font-medium mb-3">{product.name}</h3>
 
-          <div className="flex gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-4">
             {product.tags && product.tags.map((tag, index) => (
               <span key={index} className="px-1.5 py-0.5 text-xs rounded-xl bg-gray-100">
                 {tag}
@@ -77,17 +77,17 @@ const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor,
             Color: <span className="capitalize">{selectedColor}</span>
           </span>
 
-          <div className="flex items-center justify-between mb-4 py-1 border-t border-b border-gray-300">
-            <span onClick={openModal} className="text-xs underline cursor-pointer">
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-4 py-1 border-t border-b border-gray-300">
+            <span onClick={openModal} className="text-xs max-sm:w-full max-sm:my-2 max-sm:border-b border-gray-300 max-sm:py-0.5 max-sm:block underline cursor-pointer">
               Size: {selectedSize} 
             </span>
 
-            <div className="flex items-center">
+            <div className="max-sm:w-full flex sm:items-center">
               <span className="text-xs">Qty:</span>
               <select
                 value={quantity}
                 onChange={(e) => handleQuantityChange(parseInt(e.target.value))}
-                className="rounded px-1 text-xs w-22 outline-none"
+                className="rounded px-1 text-xs w-12 sm:w-22 outline-none"
               >
                 {[...Array(10)].map((_, i) => (
                   <option key={i + 1} value={i + 1}>{i + 1}</option>

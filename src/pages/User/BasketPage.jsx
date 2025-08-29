@@ -31,15 +31,15 @@ const BasketPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto pt-10 mb-16">
-      <h2 className="font-medium text-md">Shopping bag ({getTotalItems()})</h2>
+      <h2 className="font-medium text-md max-lg:ml-10">Shopping bag ({getTotalItems()})</h2>
 
       {basketItems.length > 0 ? 
-        <div className="max-w-5xl mx-auto flex">
-          <div className="w-3/5">
+        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row max-lg:justify-center max-lg:items-center">
+          <div className="w-full sm:max-w-3xl lg:w-3/5">
             <BasketGrid />
           </div>
 
-          <div className="w-2/5 pr-8">
+          <div className="w-full sm:max-w-3xl lg:w-2/5 lg:pr-8">
             <PaymentSection 
               getTotalPrice={getTotalPrice}
             />

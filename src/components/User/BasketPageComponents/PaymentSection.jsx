@@ -34,7 +34,7 @@ const PaymentSection = ({getTotalPrice, freeGiftThreshold = 150, estimatedTax = 
   ];
 
   return (
-    <div className="max-w-md mx-auto pt-10">
+    <div className="max-w-md mx-auto pt-10 max-sm:px-4">
       <button className="w-full cursor-pointer border-2 border-black bg-black text-white py-3 rounded-full text-lg  mb-6 hover:bg-white hover:text-black transition-colors">
         Checkout
       </button>

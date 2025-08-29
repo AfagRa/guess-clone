@@ -23,8 +23,8 @@ const BasketGrid = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-8 mb-8">
-      <div className="max-w-5xl mx-auto space-y-6">
+    <div className="w-full sm:max-w-6xl mx-auto mt-8 mb-8">
+      <div className="w-full sm:max-w-5xl mx-auto space-y-6">
         {basketItems.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-lg">Your basket is empty</p>
