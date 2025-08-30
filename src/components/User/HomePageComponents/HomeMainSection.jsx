@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { PiBagThin } from "react-icons/pi";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
@@ -52,12 +52,10 @@ const UserNavbar = () => {
     if (item.dropdown) {
       setMobileMenuStack([...mobileMenuStack, { type: 'main', item }]);
     } else if (item.sectionData) {
-      // Clicking on a section (like "Apparel" or "Accessories")
       setMobileMenuStack([...mobileMenuStack, { type: 'section', item }]);
     } else if (item.subcategories) {
       setMobileMenuStack([...mobileMenuStack, { type: 'subcategory', item }]);
     } else {
-      // Navigate to the item
       setMobileMenuOpen(false);
       setMobileMenuStack([]);
     }
@@ -81,7 +79,6 @@ const UserNavbar = () => {
     const current = mobileMenuStack[mobileMenuStack.length - 1];
     
     if (current.type === 'main') {
-      // Show only section titles (like "Apparel", "Accessories")
       const sectionItems = current.item.dropdown.sections.map(section => ({
         name: section.title,
         href: '#',
@@ -94,7 +91,6 @@ const UserNavbar = () => {
     }
     
     if (current.type === 'section') {
-      // Show items within a section
       return {
         title: current.item.name,
         items: current.item.sectionData.items
@@ -117,7 +113,6 @@ const UserNavbar = () => {
         mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="h-full overflow-y-auto">
-          {/* Mobile menu header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
             {mobileMenuStack.length > 0 ? (
               <button onClick={goBackMobileMenu} className="p-2">
@@ -132,9 +127,7 @@ const UserNavbar = () => {
             </button>
           </div>
 
-          {/* Mobile menu items */}
           <div className="py-4">
-            {/* Show current category as first row with back button if we're in a subcategory */}
             {mobileMenuStack.length > 0 && (
               <button
                 onClick={goBackMobileMenu}
@@ -338,7 +331,6 @@ const UserNavbar = () => {
         `}</style>
       </div>
 
-      {/* Mobile Menu */}
       {renderMobileMenu()}
     </>
   );

@@ -7,7 +7,7 @@ import Banner from './HomePageComponents/Banner';
 import { useNavigate } from 'react-router';
 import { PiBagThin } from 'react-icons/pi';
 import { useSelector, useDispatch } from 'react-redux';
-import { hideBasketDropdown, showBasketDropdown } from '../../store/basketSlice'; // Updated import
+import { hideBasketDropdown, showBasketDropdown } from '../../store/basketSlice';
 
 const UserNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -64,9 +64,9 @@ const UserNavbar = () => {
           
           <div className="flex items-center justify-center space-x-6">
             <div className="flex items-center">
-              <button className="cursor-pointer p-2">
+              {/* <button className="cursor-pointer p-2">
                 <CiSearch className="w-5 h-5" />
-              </button>
+              </button> */}
               <button className="cursor-pointer p-2">
                 <CiHeart onClick={()=> navigate('/wishlist')} className="w-5 h-5" />
               </button>

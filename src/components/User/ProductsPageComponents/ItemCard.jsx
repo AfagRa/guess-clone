@@ -18,7 +18,6 @@ const ItemCard = ({ item, onNavigate }) => {
   const mainImage = currentImages[0];
   const hoverImage = currentImages[1] || currentImages[0];
 
-  // Check if item is in wishlist on component mount and when wishlist changes
   useEffect(() => {
     const isInWishlist = wishlistItems.some(wishlistItem => wishlistItem.id === item.id);
     setIsFavorited(isInWishlist);

@@ -57,7 +57,6 @@ const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, 
         colorOptions={colorOptions}
       />
 
-      {/* Color Filter */}
       <div className="border-b border-gray-800 py-1">
         <div onClick={() => toggleFilter('colors')} className="flex items-center justify-between cursor-pointer gap-2 w-full py-2">
           <p className="text-sm">
@@ -78,7 +77,6 @@ const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, 
         )}
       </div>
 
-      {/* Size Filter */}
       <div className="border-b border-gray-800 py-1">
         <div onClick={() => toggleFilter('sizes')} className="flex items-center justify-between cursor-pointer gap-2 w-full py-2">
           <p className="text-sm">
@@ -98,7 +96,6 @@ const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, 
         )}
       </div>
 
-      {/* Price Filter */}
       <div className="border-b border-gray-800 py-1">
         <div onClick={() => toggleFilter('price')} className="flex items-center justify-between cursor-pointer gap-2 w-full py-2">
           <p className="text-sm">
@@ -118,7 +115,6 @@ const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, 
         )}
       </div>
 
-      {/* Discount Filter */}
       <div className="border-b border-gray-800 py-1">
         <div onClick={() => toggleFilter('discount')} className="flex items-center justify-between cursor-pointer gap-2 w-full py-2">
           <p className="text-sm">
@@ -138,7 +134,6 @@ const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, 
         )}
       </div>
 
-      {/* Features Filter */}
       <div className="border-b border-gray-800 py-1">
         <div onClick={() => toggleFilter('features')} className="flex items-center justify-between cursor-pointer gap-2 w-full py-2">
           <p className="text-sm">

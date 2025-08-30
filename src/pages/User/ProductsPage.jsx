@@ -10,11 +10,6 @@ import { products } from "../../data/products"
 const ProductsPage = () => {
   const params = useParams()
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-  
-  // Get basket state from Redux instead of local state
-  const basketItems = useSelector(state => state.basket.items)
-  const showBasketDropdown = useSelector(state => state.basket.showDropdown)
   
   const path = [params.main, ...params['*'].split('/')]
   const [maincat, subcat, ...rest] = path

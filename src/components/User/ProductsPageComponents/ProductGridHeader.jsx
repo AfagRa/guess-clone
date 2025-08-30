@@ -4,22 +4,7 @@ import { GoChevronDown } from "react-icons/go";
 import CategoryFilter from "./CategoryFilter";
 import { useState } from "react";
 
-const ProductGridHeader = ({
-  categoryTitle,
-  matchedItemsCount,
-  sortBy,
-  onSortChange,
-  viewColumns,
-  onViewChange,
-  viewOptions,
-  itemsPerPage,
-  handleViewAll,
-  totalItems,
-  currentPage,
-  totalPages,
-  setCurrentPage,
-  section, cat, subcat2, catlist, allSections, mainCategory
-}) => {
+const ProductGridHeader = ({categoryTitle, matchedItemsCount, sortBy, onSortChange, viewColumns, onViewChange, viewOptions, itemsPerPage, handleViewAll, totalItems, currentPage, totalPages, setCurrentPage, section, cat, subcat2, catlist, allSections, mainCategory}) => {
 
     const [showCat, setShowCat] = useState(false)
     return (

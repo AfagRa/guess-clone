@@ -18,7 +18,6 @@ const AddButtonModal = ({ product, isOpen, onClose, onSuccess }) => {
         size: selectedSize
       };
 
-      // addItem now automatically shows the dropdown
       dispatch(addItem(productToAdd));
 
       onSuccess(); 

@@ -2,11 +2,9 @@ import { FiX } from "react-icons/fi"
 
 const AllAppliedFilters = ({colorOptions, appliedFilters, setAppliedFilters, matchedItemsCount, totalItemsCount }) => {
   
-  // Get all applied filters for display
   const getAllAppliedFilters = () => {
     const allFilters = []
     
-    // Category filters
     if (appliedFilters.category?.length > 0) {
       appliedFilters.category.forEach(item => {
         allFilters.push({
@@ -17,7 +15,6 @@ const AllAppliedFilters = ({colorOptions, appliedFilters, setAppliedFilters, mat
       })
     }
     
-    // Color filters
     if (appliedFilters.colors?.length > 0) {
       appliedFilters.colors.forEach(color => {
         const colorData = colorOptions.find(c => c.name.toLowerCase() === color.toLowerCase())
@@ -30,7 +27,6 @@ const AllAppliedFilters = ({colorOptions, appliedFilters, setAppliedFilters, mat
       })
     }
     
-    // Size filters
     if (appliedFilters.sizes?.length > 0) {
       appliedFilters.sizes.forEach(size => {
         allFilters.push({
@@ -41,7 +37,6 @@ const AllAppliedFilters = ({colorOptions, appliedFilters, setAppliedFilters, mat
       })
     }
     
-    // Price filter
     if (appliedFilters.price?.length > 0) {
       appliedFilters.price.forEach(priceRange => {
         allFilters.push({
@@ -52,7 +47,6 @@ const AllAppliedFilters = ({colorOptions, appliedFilters, setAppliedFilters, mat
       })
     }
     
-    // Discount filters
     if (appliedFilters.discount?.length > 0) {
       appliedFilters.discount.forEach(discount => {
         allFilters.push({
@@ -63,7 +57,6 @@ const AllAppliedFilters = ({colorOptions, appliedFilters, setAppliedFilters, mat
       })
     }
     
-    // Feature filters
     if (appliedFilters.features?.length > 0) {
       appliedFilters.features.forEach(feature => {
         allFilters.push({
@@ -77,18 +70,15 @@ const AllAppliedFilters = ({colorOptions, appliedFilters, setAppliedFilters, mat
     return allFilters
   }
 
-  // Remove individual filter
   const removeFilter = (filterType, filterValue) => {
     setAppliedFilters(prev => {
       const updated = { ...prev }
       
       if (filterType === 'price') {
-        // For price, remove the specific range
         updated[filterType] = updated[filterType].filter(range => 
           !(range[0] === filterValue[0] && range[1] === filterValue[1])
         )
       } else {
-        // For other filters, remove the specific value
         updated[filterType] = updated[filterType].filter(item => item !== filterValue)
       }
       

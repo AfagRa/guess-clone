@@ -1,16 +1,13 @@
 import { Link } from "react-router"
 
 const CategoryFilter = ({ maincat, subcat, cat, subcat2, catlist, allSections }) => {
-    // Fix: subcat is an object, we need subcat.slug
     const subcatSlug = subcat?.slug || subcat
-    // Determine what level we're at
     const isAtSectionLevel = !cat || cat === 'view-all'
     
     return (
         <div className="space-y-2">
             
             {isAtSectionLevel ? (
-                // SECTION LEVEL: Show Apparel, Accessories, Featured Shops
                 allSections && allSections.map((section, ind) => {
                     const isActiveSection = section.slug === subcatSlug
                     return (
@@ -22,7 +19,6 @@ const CategoryFilter = ({ maincat, subcat, cat, subcat2, catlist, allSections })
                                 {section.title}
                             </Link>
                             
-                            {/* Show children for active section */}
                             {isActiveSection && section.items && (
                                 <div className="pl-4 space-y-1 mt-1">
                                     <Link 
@@ -49,7 +45,6 @@ const CategoryFilter = ({ maincat, subcat, cat, subcat2, catlist, allSections })
                     )
                 })
             ) : (
-                // ITEM LEVEL: Show View All + catlist items (Tops siblings)
                 <div>
                     <Link 
                         to={`/${maincat?.slug}/${subcatSlug}/view-all`}
@@ -69,7 +64,6 @@ const CategoryFilter = ({ maincat, subcat, cat, subcat2, catlist, allSections })
                                 {item.name}
                             </Link>
                             
-                            {/* Show subcategories for active item */}
                             {item.slug === cat && item.subcategories && (
                                 <div className="pl-4 space-y-1 mt-1">
                                     {item.subcategories.map((subItem, subIndex) => (
