@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../../store/basketSlice';
+import { removeItem } from '../../../store/wishlistSlice';
 import OptionsModal from '../BasketPageComponents/OptionsModal';
+import { useNavigate } from 'react-router';
 
-const WishlistItem = ({product, initialQuantity = 1, selectedColor: initialColor, selectedSize: initialSize, onQuantityChange, onRemove, onMoveToBasket }) => {
+const WishlistItem = ({product, initialQuantity = 1, selectedColor: initialColor, selectedSize: initialSize }) => {
     const [quantity, setQuantity] = useState(initialQuantity);
     const [selectedColor, setSelectedColor] = useState(initialColor || Object.keys(product.imagesByColor)[0]);
     const [selectedSize, setSelectedSize] = useState(initialSize || product.sizes[0]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showBasketNotification, setShowBasketNotification] = useState(false);
 
+    const dispatch = useDispatch();
     const currentPrice = product.salePrice || product.price;
 
     const handleQuantityChange = (newQuantity) => {
         if (newQuantity >= 1) {
             setQuantity(newQuantity);
-            onQuantityChange && onQuantityChange(product.id, selectedColor, selectedSize, newQuantity);
         }
     };
 
@@ -21,28 +26,46 @@ const WishlistItem = ({product, initialQuantity = 1, selectedColor: initialColor
         setSelectedColor(color);
         setSelectedSize(size);
         setQuantity(newQuantity);
-        onQuantityChange && onQuantityChange(product.id, color, size, newQuantity);
     };
 
     const handleRemove = () => {
-        onRemove && onRemove(product.id, selectedColor, selectedSize);
+        dispatch(removeItem({
+            id: product.id,
+            color: selectedColor,
+            size: selectedSize
+        }));
     };
 
     const handleMoveToBasket = () => {
-        onMoveToBasket && onMoveToBasket({
-            product,
-            selectedColor,
-            selectedSize,
-            quantity
-        });
+        if (isReadyForBasket) {
+            dispatch(addItem({
+                ...product,
+                selectedColor,
+                selectedSize,
+                quantity
+            }));
+
+            setShowBasketNotification(true);
+            setTimeout(() => { setShowBasketNotification(false); }, 1000);
+        } else {
+            setIsModalOpen(true);
+        }
     };
 
     const openModal = () => { setIsModalOpen(true); };
+
+    const navigate = useNavigate()
 
     const isReadyForBasket = selectedColor && selectedSize;
 
     return (
         <div className="pt-5 px-4 sm:px-10 w-full">
+            {showBasketNotification && (
+                <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gray-800 text-white px-4 py-2 rounded-md shadow-lg">
+                    Added to the basket
+                </div>
+            )}
+
             <div className='flex flex-col w-full sm:mx-auto max-lg:space-y-4 lg:flex-row justify-between items-center'>
                 <div className="flex gap-6 relative pl-8 w-full lg:w-3/5">
                     <button onClick={handleRemove} className="absolute top-0 left-0 cursor-pointer">
@@ -50,10 +73,10 @@ const WishlistItem = ({product, initialQuantity = 1, selectedColor: initialColor
                     </button>
                     <div className='flex justify-center items-center space-x-3 sm:space-x-6 w-full'>
                         <div className="h-60 w-auto flex-shrink-0">
-                            <img
+                            <img onClick={()=>{navigate(`/product/${product.id}`)}}
                                 src={product.imagesByColor[selectedColor][0]}
                                 alt={product.name}
-                                className="h-40 sm:w-full sm:h-full object-cover"
+                                className="cursor-pointer h-40 sm:w-full sm:h-full object-cover"
                             />
                         </div>
 

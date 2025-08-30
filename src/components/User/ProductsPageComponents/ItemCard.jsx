@@ -80,7 +80,7 @@ const ItemCard = ({ item, onNavigate }) => {
 
       {showBasketNotification && (
         <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gray-800 text-white px-4 py-2 rounded-md shadow-lg">
-          Added to the basket
+          Product added to the bag
         </div>
       )}
       
@@ -126,7 +126,7 @@ const ItemCard = ({ item, onNavigate }) => {
               title={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
             >
               {isFavorited ? (
-                <IoMdHeart className="text-red-500 w-5 h-5" />
+                <IoMdHeart className="text-gray-500 w-5 h-5" />
               ) : (
                 <IoMdHeartEmpty className="text-gray-500 w-5 h-5" />
               )}

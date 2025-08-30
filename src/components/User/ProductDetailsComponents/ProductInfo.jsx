@@ -1,18 +1,27 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SizeChart from "./SizeChart";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { GoShare } from "react-icons/go";
 import CategoryHeader from "../ProductsPageComponents/CategoryHeader";
 import { addItem } from "../../../store/basketSlice";
+import { addItem as addToWishlist, removeItem as removeFromWishlist } from "../../../store/wishlistSlice";
 
 const ProductInfo = ({ product, selectedColor, setSelectedColor, renderStars }) => {
   const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || '');
-  const [isInWishlist, setIsInWishlist] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showBasketNotification, setShowBasketNotification] = useState(false);
+  const [showWishlistNotification, setShowWishlistNotification] = useState(false);
+  const [wishlistNotificationText, setWishlistNotificationText] = useState('');
 
   const dispatch = useDispatch();
+  const wishlistItems = useSelector(state => state.wishlist.items);
+  
+  const isInWishlist = wishlistItems.some(item => 
+    item.id === product.id && 
+    item.selectedColor === selectedColor && 
+    item.selectedSize === selectedSize
+  );
 
   useEffect(() => {
     if (!selectedColor && product.imagesByColor) {
@@ -38,15 +47,25 @@ const ProductInfo = ({ product, selectedColor, setSelectedColor, renderStars }) 
     console.log('Added:', product.name, selectedColor, selectedSize);
   };
 
-
   const handleWishlistToggle = () => {
     if (isInWishlist) {
-      setIsInWishlist(false);
-      showNotificationMessage('Removed from wishlist');
+      dispatch(removeFromWishlist({
+        id: product.id,
+        color: selectedColor,
+        size: selectedSize
+      }));
+      setWishlistNotificationText('Removed from favorites');
     } else {
-      setIsInWishlist(true);
-      showNotificationMessage('Added to wishlist');
+      dispatch(addToWishlist({
+        ...product,
+        selectedColor,
+        selectedSize
+      }));
+      setWishlistNotificationText('Added to favorites');
     }
+    
+    setShowWishlistNotification(true);
+    setTimeout(() => setShowWishlistNotification(false), 1000);
   };
 
   const scrollToRating = () => {
@@ -86,7 +105,13 @@ const ProductInfo = ({ product, selectedColor, setSelectedColor, renderStars }) 
     <div className="w-full max-md:px-3 md:pr-10 pb-8">
       {showBasketNotification && (
         <div className="fixed top-25 left-1/2 transform -translate-x-1/2 z-50 bg-gray-400 text-white px-3 py-2 flex items-center shadow-lg">
-          Added to the basket
+          Product added to bag
+        </div>
+      )}
+
+      {showWishlistNotification && (
+        <div className="fixed top-25 left-1/2 transform -translate-x-1/2 z-50 bg-gray-400 text-white px-3 py-2 flex items-center shadow-lg">
+          {wishlistNotificationText}
         </div>
       )}
 
