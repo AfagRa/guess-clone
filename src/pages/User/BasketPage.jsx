@@ -1,6 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { loadBasketItems } from "../../store/basketSlice";
+import { useSelector } from "react-redux";
 import BasketGrid from "../../components/User/BasketPageComponents/BasketGrid";
 import PaymentSection from "../../components/User/BasketPageComponents/PaymentSection";
 import ItemsGrid from "../../components/User/ProductDetailsComponents/ItemsGrid";
@@ -8,13 +6,7 @@ import EmptyBasket from "../../components/User/BasketPageComponents/EmptyBasket"
 import { products } from "../../data/products";
 
 const BasketPage = () => {
-  const dispatch = useDispatch();
   const basketItems = useSelector(state => state.basket.items);
-
-  // Load basket items from localStorage on component mount
-  useEffect(() => {
-    dispatch(loadBasketItems());
-  }, [dispatch]);
 
   const getTotalItems = () => {
     return basketItems.reduce((total, item) => total + item.quantity, 0);
@@ -69,7 +61,7 @@ const BasketPage = () => {
         {basketItems.length > 0 &&
           <ItemsGrid 
             title="From your favorites" 
-            products={randomItems} 
+            products={JSON.parse(localStorage.getItem("wishlistItems") || "[]")} 
             height="300px" 
             showPrice={true}
             maxWidth="auto"

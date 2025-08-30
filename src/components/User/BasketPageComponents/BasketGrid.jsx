@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { updateQuantity, deleteItem, moveToFavorites } from '../../../store/basketSlice';
+import { updateQuantity, deleteItem } from '../../../store/basketSlice';
 import BasketItem from './BasketItem';
 
 const BasketGrid = () => {
@@ -19,7 +19,7 @@ const BasketGrid = () => {
   };
 
   const handleMoveToFavorites = (productId, color, size) => {
-    dispatch(moveToFavorites({ id: productId, color, size }));
+    dispatch(deleteItem({ id: productId, color, size }));
   };
 
   return (

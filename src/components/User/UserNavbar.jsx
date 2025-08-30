@@ -72,7 +72,7 @@ const UserNavbar = () => {
                 <CiSearch className="w-5 h-5" />
               </button>
               <button className="cursor-pointer p-2">
-                <CiHeart className="w-5 h-5" />
+                <CiHeart onClick={()=> navigate('/wishlist')} className="w-5 h-5" />
               </button>
               <div className="relative">
                 <div onClick={()=> navigate('/basket')} 

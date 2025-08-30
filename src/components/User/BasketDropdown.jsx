@@ -1,6 +1,7 @@
 import { IoMdClose } from 'react-icons/io';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router';
+import { deleteItem } from '../../store/basketSlice';
 
 const BasketDropdown = ({ showBasket }) => {
   const basketItems = useSelector(state => state.basket.items).slice().reverse();
@@ -16,6 +17,12 @@ const BasketDropdown = ({ showBasket }) => {
   };
 
   const shippingInfo = getShippingThreshold();
+
+  const dispatch = useDispatch()
+
+  const handleRemove = (id, color, size) => {
+    dispatch(deleteItem({ id, color, size }));
+  }
  
   return (
     <div>      
@@ -61,8 +68,8 @@ const BasketDropdown = ({ showBasket }) => {
                           <h4 className="text-sm font-medium  leading-tight">
                             {item.name}
                           </h4>
-                          <button className="ml-2 flex-shrink-0">
-                            <IoMdClose />
+                          <button className="ml-2 flex-shrink-0 cursor-pointer">
+                            <IoMdClose onClick={() => handleRemove(item.id, item.selectedColor || item.color, item.selectedSize || item.size)} />
                           </button>
                         </div>
                         
@@ -118,12 +125,12 @@ const BasketDropdown = ({ showBasket }) => {
                   </div>
                   
                   <div className="flex gap-2">
-                    <button className="flex-1 bg-white border-2 py-2 px-4 rounded-full text-sm hover:bg-black hover:text-white transition-colors duration-200">
+                    <Link to='/basket' className="flex-1 bg-white border-2 py-2 px-4 rounded-full text-sm hover:bg-black hover:text-white transition-colors duration-200 text-center">
                       Shopping bag
-                    </button>
-                    <button className="flex-1 bg-black text-white py-2 px-4 rounded-full text-sm">
+                    </Link>
+                    <Link to='/basket' className="cursor-pointer flex-1 bg-black text-white py-2 px-4 rounded-full text-sm text-center">
                       Checkout
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </>

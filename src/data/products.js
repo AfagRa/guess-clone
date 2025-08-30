@@ -2590,7 +2590,7 @@ export const products = [
     imagesByColor: {
       blue: [
         "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W92A27D3920-SOFI.jpg",
-        "hhttps://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W92A27D3920-SOFI-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W92A27D3920-SOFI-ALT1.jpg",
         "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+3",
         "https://placehold.co/600x800/808A95/000000?text=Jeans+Light+Wash+4"
       ],
@@ -2840,7 +2840,7 @@ export const products = [
     imagesByColor: {
       white: [
         "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YP34KCYR1-G011.jpg",
-        "hhttps://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YP34KCYR1-G011-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/W5YP34KCYR1-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=Top+Puff+Sleeve+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=Top+Puff+Sleeve+White+4"
       ],
@@ -3482,7 +3482,7 @@ export const products = [
     imagesByColor: {
       white: [
         "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GI23K8HM0-G011.jpg",
-        "hhttps://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GI23K8HM0-G011-ALT1.jpg",
+        "https://img.guess.com/image/upload/f_auto,q_auto:best,dpr_2,b_auto,c_pad,w_600/v1/NA/Style/ECOMM/M5GI23K8HM0-G011-ALT1.jpg",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Classic+White+3",
         "https://placehold.co/600x800/FFFFFF/000000?text=T-shirt+Classic+White+4"
       ],

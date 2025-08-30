@@ -50,7 +50,7 @@ const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor,
   return (
     <div className="pt-5 px-4 sm:px-10">
       <div className="flex gap-6 relative">
-        <button onClick={handleRemove} className="absolute top-0 right-0">
+        <button onClick={handleRemove} className="absolute top-0 right-0 cursor-pointer">
           <MdOutlineClose size={20} />
         </button>
         <div className="h-60 w-auto flex-shrink-0">
@@ -96,7 +96,6 @@ const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor,
             </div>
           </div>
 
-          {/* Move to Favorites */}
           <button onClick={handleMoveToFavorites} className="flex items-center gap-2 text-xs mb-4">
             <CiHeart size={16} />
             Move to favorites

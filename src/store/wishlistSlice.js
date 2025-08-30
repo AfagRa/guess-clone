@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: JSON.parse(localStorage.getItem('basketItems')) || [],
+  items: JSON.parse(localStorage.getItem('wishlistItems')) || [],
   showDropdown: false
 };
 
-const basketSlice = createSlice({
-  name: "basket",
+const wishlistSlice = createSlice({
+  name: "wishlist",
   initialState,
   reducers: {
     addItem: (state, action) => {
@@ -27,7 +27,7 @@ const basketSlice = createSlice({
         });
       }
       state.showDropdown = true;
-      localStorage.setItem('basketItems', JSON.stringify(state.items));
+      localStorage.setItem('wishlistItems', JSON.stringify(state.items));
     },
 
     deleteItem: (state, action) => {
@@ -37,7 +37,7 @@ const basketSlice = createSlice({
           item.selectedColor === color && 
           item.selectedSize === size)
       );
-      localStorage.setItem('basketItems', JSON.stringify(state.items));
+      localStorage.setItem('wishlistItems', JSON.stringify(state.items));
     },
 
     updateQuantity: (state, action) => {
@@ -49,12 +49,12 @@ const basketSlice = createSlice({
       );
       if (item) {
         if (quantity <= 0) {
-          state.items = state.items.filter(basketItem => basketItem !== item);
+          state.items = state.items.filter(wishlistItem => wishlistItem !== item);
         } else {
           item.quantity = quantity;
         }
       }
-      localStorage.setItem('basketItems', JSON.stringify(state.items));
+      localStorage.setItem('wishlistItems', JSON.stringify(state.items));
     },
 
     updateItem: (state, action) => {
@@ -75,7 +75,7 @@ const basketSlice = createSlice({
           quantity: quantity || state.items[itemIndex].quantity
         };
       }
-      localStorage.setItem('basketItems', JSON.stringify(state.items));
+      localStorage.setItem('wishlistItems', JSON.stringify(state.items));
     },
 
     removeItem: (state, action) => {
@@ -85,25 +85,39 @@ const basketSlice = createSlice({
           item.selectedColor === color && 
           item.selectedSize === size)
       );
-      localStorage.setItem('basketItems', JSON.stringify(state.items));
+      localStorage.setItem('wishlistItems', JSON.stringify(state.items));
     },
 
-    clearBasket: (state) => {
+    addToBasket: (state, action) => {
+      const { id, color, size } = action.payload;
+      state.items = state.items.filter(item => 
+        !(item.id === id && 
+          item.selectedColor === color && 
+          item.selectedSize === size)
+      );
+      localStorage.setItem('wishlistItems', JSON.stringify(state.items));
+    },
+
+    clearWishlist: (state) => {
       state.items = [];
-      localStorage.setItem('basketItems', JSON.stringify(state.items));
+      localStorage.setItem('wishlistItems', JSON.stringify(state.items));
     },
 
-    showBasketDropdown: (state) => {
+    showWishlistDropdown: (state) => {
       state.showDropdown = true;
     },
 
-    hideBasketDropdown: (state) => {
+    hideWishlistDropdown: (state) => {
       state.showDropdown = false;
     },
 
-    toggleBasketDropdown: (state) => {
+    toggleWishlistDropdown: (state) => {
       state.showDropdown = !state.showDropdown;
     },
+
+    loadWishlistItems: (state) => {
+      state.items = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+    }
   }
 });
 
@@ -113,10 +127,12 @@ export const {
   updateQuantity,
   updateItem,
   removeItem,
-  clearBasket,
-  showBasketDropdown,
-  hideBasketDropdown,
-  toggleBasketDropdown
-} = basketSlice.actions;
+  addToBasket,
+  clearWishlist,
+  showWishlistDropdown,
+  hideWishlistDropdown,
+  toggleWishlistDropdown,
+  loadWishlistItems
+} = wishlistSlice.actions;
 
-export default basketSlice.reducer;
+export default wishlistSlice.reducer;

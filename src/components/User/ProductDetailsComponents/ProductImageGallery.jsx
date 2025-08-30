@@ -94,14 +94,6 @@ const ProductImageGallery = ({ images, productName}) => {
             onClick={() => openModal(i)}
           />
         ))}
-
-        {/* <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-          <ScrollIndicator
-            sections={images.map((_, i) => ({ positionId: i }))}
-            containerId="product-grid"
-            variant="grid"
-          />
-        </div> */}
       </div>
 
 
