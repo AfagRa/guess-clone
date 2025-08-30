@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import '../../styles/homepage.css';
 import ItemsGrid from '../../components/User/ProductDetailsComponents/ItemsGrid';
 import { products } from '../../data/products';

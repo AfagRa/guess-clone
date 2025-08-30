@@ -63,10 +63,6 @@ const UserNavbar = () => {
           </div>
           
           <div className="flex items-center justify-center space-x-6">
-            <a href="/profile" className="hidden md:flex items-center space-x-2 text-xs">
-              <p>Hi, <u>Sign in or Register</u></p>
-            </a>
-            
             <div className="flex items-center">
               <button className="cursor-pointer p-2">
                 <CiSearch className="w-5 h-5" />
