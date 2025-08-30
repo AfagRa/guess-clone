@@ -43,8 +43,6 @@ const ProductInfo = ({ product, selectedColor, setSelectedColor, renderStars }) 
 
     setShowBasketNotification(true);
     setTimeout(() => setShowBasketNotification(false), 2000);
-
-    console.log('Added:', product.name, selectedColor, selectedSize);
   };
 
   const handleWishlistToggle = () => {
@@ -167,7 +165,6 @@ const ProductInfo = ({ product, selectedColor, setSelectedColor, renderStars }) 
               <button
                 key={color}
                 onClick={() => {
-                  console.log('Color changed to:', color);
                   setSelectedColor(color);
                 }}
                 className={`w-8 h-8 rounded-full border-2 transition-colors cursor-pointer capitalize ${selectedColor === color ? 'border-black' : 'border-gray-300'}`}
