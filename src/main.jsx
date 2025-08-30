@@ -6,8 +6,6 @@ import { route } from './router/route.jsx'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
 
-console.log('🛒 Redux store:', store);
-
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>

@@ -12,42 +12,26 @@ import { addItem } from '../../store/basketSlice';
 
 const HomePage = () => {
   const categories = [
-    { name: "Women's Jeans", path: "/womens-jeans" },
-    { name: "Handbags", path: "/handbags" }, 
-    { name: "Women's Tops", path: "/womens-tops" },
-    { name: "Women's Shorts", path: "/womens-shorts" },
-    { name: "Women's Shoes", path: "/womens-shoes" },
-    { name: "Women's Skirts", path: "/womens-skirts" },
-    { name: "Dresses", path: "/dresses" },
-    { name: "Women's Apparel", path: "/womens-apparel" },
-    { name: "Men's Apparel", path: "/mens-apparel" }
+    { name: "Women's Jeans", path: "/women/apparel/jeans-denims/view-all" },
+    { name: "Handbags", path: "/handbags/view-all" }, 
+    { name: "Women's Tops", path: "/women/apparel/tops/view-all" },
+    { name: "Women's Shorts", path: "/women/apparel/shorts" },
+    { name: "Women's Shoes", path: "/women/apparel/shoes/view-all" },
+    { name: "Women's Skirts", path: "/women/apparel/skirts" },
+    { name: "Dresses", path: "/women/apparel/dresses" },
+    { name: "Women's Apparel", path: "/women/apparel" },
+    { name: "Men's Apparel", path: "/men/apparel" }
   ];
 
   const dispatch = useDispatch();
   const basketItems = useSelector(state => state.basket.items);
 
-  // Add console log to see what useSelector returns
-  console.log('🛒 Current basket items from useSelector:', basketItems);
-
-  // Calculate total items in basket for display
-  const totalItemsInBasket = basketItems.reduce((total, item) => total + item.quantity, 0);
-  console.log('🔢 Total items in basket:', totalItemsInBasket);
-
-  const handleAddToBasket = (product) => {
-    console.log('📦 Product being added (this is the payload):', product);
-    
-    dispatch(addItem(product));
-    
-    console.log('✅ Action dispatched! Check Redux DevTools to see the action and payload');
-    console.log(`Added ${product.name} to basket. Total items will be: ${totalItemsInBasket + 1}`);
-  }
+  const handleAddToBasket = (product) => {dispatch(addItem(product))}
 
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const curatedForYou = useMemo(() => {
-  return [...products].sort(() => Math.random() - 0.5).slice(0, 7);
-}, []); // ✅ Only runs once → ItemsGrid stays stable
+  const curatedForYou = products.slice(0,10)
 
   const handleVideo = () => {
     if (!videoRef.current) return
@@ -58,6 +42,7 @@ const HomePage = () => {
 
   return (
     <div className='px-0 sm:px-10 md:px-0'>
+      
       <HeroSection videoRef={videoRef} isPlaying={isPlaying} handleVideo={handleVideo} />
 
       <div>

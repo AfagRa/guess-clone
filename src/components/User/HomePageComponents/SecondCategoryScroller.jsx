@@ -1,8 +1,22 @@
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import { useRef, useState } from 'react';
 
-const SecondCategoryScroller = ({ videoRef, handleVideo, isPlaying }) => {
+const SecondCategoryScroller = () => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const handleVideo = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <SimpleBar autoHide={false} forceVisible="x" className="gallery-container py-[20px]">
       <div className="flex pb-2 w-full">
