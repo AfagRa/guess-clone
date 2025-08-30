@@ -20,15 +20,13 @@ const WishlistPage = () => {
 
       {favoriteItems.length > 0 ? 
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row max-lg:justify-center max-lg:items-center">
-          <div className="w-full sm:max-w-3xl">
-            <WishlistGrid />
-          </div>
+          <WishlistGrid />
         </div>
         :
         <EmptyWishlist />
       }
 
-      <div className={`space-y-12 mt-10 max-w-3xl mx-auto`}>
+      <div className={`space-y-12 mt-10 max-w-3xl lg:max-w-5xl mx-auto`}>
         <ItemsGrid 
           title="Top picks for you" 
           products={randomItems} 

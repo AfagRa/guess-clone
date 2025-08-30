@@ -21,14 +21,12 @@ const WishlistGrid = () => {
     };
 
     const handleMoveToBasket = (item) => {
-        // Remove from wishlist
         dispatch(deleteItem({ 
             id: item.id, 
             color: item.selectedColor || item.color, 
             size: item.selectedSize || item.size 
         }));
         
-        // Add to basket
         dispatch(addItem({
             ...item,
             selectedColor: item.selectedColor || item.color,
@@ -37,8 +35,8 @@ const WishlistGrid = () => {
     };
 
     return (
-        <div className="w-full mx-auto mt-8 mb-8">
-            <div className="w-full mx-auto space-y-6">
+        <div className="w-full sm:mx-auto mt-8 mb-8">
+            <div className="w-full sm:mx-auto space-y-6">
                 {wishlistItems.map(item => (
                     <WishlistItem
                         key={`${item.id}-${item.selectedColor || item.color}-${item.selectedSize || item.size}`}
