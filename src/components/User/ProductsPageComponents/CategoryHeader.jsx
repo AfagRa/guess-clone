@@ -6,7 +6,7 @@ const CategoryHeader = ({path}) => {
       {path.map((crumb, i) => (
       <div key={i} className="flex items-center">
         {i > 0 && <span className="mx-1"> / </span>}
-        <Link to={`/category/${path.map(p=>p).join("/")}`}>
+        <Link to={`/${path.map(p=>p).join("/")}`}>
           <span className="capitalize">{crumb.replace('-', ' ')}</span>
         </Link>
       </div>
