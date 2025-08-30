@@ -54,8 +54,9 @@
 
 @media (max-width: 767px) {
     .simplebar-track.simplebar-horizontal {
-    width: 60% !important;
-    left: 20% !important;
+    width: 40% !important;
+    left: 50% !important; 
+    transform: translateX(-50%);
     }
     
     .gallery-container {
