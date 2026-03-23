@@ -3,10 +3,11 @@ import BasketGrid from "../../components/User/BasketPageComponents/BasketGrid";
 import PaymentSection from "../../components/User/BasketPageComponents/PaymentSection";
 import ItemsGrid from "../../components/User/ProductDetailsComponents/ItemsGrid";
 import EmptyBasket from "../../components/User/BasketPageComponents/EmptyBasket";
-import { products } from "../../data/products";
+import { useProducts } from "../../hooks/useProducts";
 
 const BasketPage = () => {
   const basketItems = useSelector(state => state.basket.items);
+  const { products, loading } = useProducts({})
 
   const getTotalItems = () => {
     return basketItems.reduce((total, item) => total + item.quantity, 0);
@@ -42,13 +43,17 @@ const BasketPage = () => {
       }
 
       <div className={`space-y-12 mt-10 ${basketItems.length > 0 ? '' : 'max-w-3xl mx-auto'}`}>
-        <ItemsGrid 
-          title="Top picks for you" 
-          products={randomItems} 
-          height="300px" 
-          showPrice={true}
-          maxWidth="auto"
-        />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <ItemsGrid 
+            title="Top picks for you" 
+            products={randomItems} 
+            height="300px" 
+            showPrice={true}
+            maxWidth="auto"
+          />
+        )}
 
         <ItemsGrid 
           title="Your recently viewed items" 

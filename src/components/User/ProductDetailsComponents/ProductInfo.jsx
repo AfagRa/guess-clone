@@ -25,7 +25,7 @@ const ProductInfo = ({ product, selectedColor, setSelectedColor, renderStars }) 
 
   useEffect(() => {
     if (!selectedColor && product.imagesByColor) {
-      const firstColor = Object.keys(product.imagesByColor)[0];
+      const firstColor = Object.keys(product.imagesByColor ?? {})[0];
       if (firstColor) {
         setSelectedColor(firstColor);
       }
@@ -161,7 +161,7 @@ const ProductInfo = ({ product, selectedColor, setSelectedColor, renderStars }) 
         <div className="mb-4">
           <div className="text-sm mb-2">Color: {selectedColor}</div>
           <div className="flex gap-4">
-            {Object.keys(product.imagesByColor).map((color) => (
+            {Object.keys(product.imagesByColor ?? {}).map((color) => (
               <button
                 key={color}
                 onClick={() => {

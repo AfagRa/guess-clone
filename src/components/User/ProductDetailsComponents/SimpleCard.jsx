@@ -9,9 +9,11 @@ const SimpleCard = ({ product, height, showPrice, onAddSuccess }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const currentImages = item.imagesByColor[item.colors[0]];
-  const mainImage = currentImages[0];
-  const hoverImage = currentImages[1] || currentImages[0];
+  const imagesByColor = item.imagesByColor ?? item.images_by_color ?? {};
+  const firstColor = item.colors?.[0];
+  const currentImages = (firstColor && imagesByColor[firstColor]) ? imagesByColor[firstColor] : Object.values(imagesByColor)[0] ?? [];
+  const mainImage = currentImages[0] ?? '';
+  const hoverImage = currentImages[1] ?? mainImage;
 
   const navigate = useNavigate();
 

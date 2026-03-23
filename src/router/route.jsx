@@ -6,6 +6,10 @@ import GeneralLayout from "../layout/GeneralLayout";
 import SalePage from "../pages/User/SalePage";
 import DetailsPage from "../pages/User/DetailsPage";
 import ProductsPage from "../pages/User/ProductsPage";
+import LoginPage from "../pages/User/LoginPage";
+import RegisterPage from "../pages/User/RegisterPage";
+import ProfilePage from "../pages/User/ProfilePage";
+import PersonalizedPage from "../pages/User/PersonalizedPage";
 
 export const route = createBrowserRouter(
     createRoutesFromElements(
@@ -18,6 +22,10 @@ export const route = createBrowserRouter(
                 <Route path="basket" element={<BasketPage />} />
                 <Route path="wishlist" element={<WishlistPage />} />
                 <Route path="sale" element={<SalePage />} />
+                <Route path="login" element={<LoginPage />} />
+                <Route path="register" element={<RegisterPage />} />
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="for-you" element={<PersonalizedPage />} />
             </Route>
         </>
     )

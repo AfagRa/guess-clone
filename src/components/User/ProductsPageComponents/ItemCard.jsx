@@ -14,9 +14,14 @@ const ItemCard = ({ item, onNavigate }) => {
   const [showBasketNotification, setShowBasketNotification] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
 
-  const currentImages = item.imagesByColor[item.colors[0]];
-  const mainImage = currentImages[0];
-  const hoverImage = currentImages[1] || currentImages[0];
+  const imagesByColor = item.imagesByColor ?? item.images_by_color ?? {};
+  const firstColor = item.colors?.[0];
+  const currentImages = (firstColor && imagesByColor[firstColor]) ? imagesByColor[firstColor] : Object.values(imagesByColor)[0] ?? [];
+  const mainImage = currentImages[0] ?? '';
+  const hoverImage = currentImages[1] ?? mainImage;
+  const firstWishlistColor = item.colors?.[0];
+  const firstWishlistSize = item.sizes?.[0];
+  const colorCount = item.colors?.length ?? 0;
 
   useEffect(() => {
     const isInWishlist = wishlistItems.some(wishlistItem => wishlistItem.id === item.id);
@@ -31,8 +36,8 @@ const ItemCard = ({ item, onNavigate }) => {
       const wishlistItem = {
         id: item.id, 
         ...item, 
-        selectedColor: item.colors[0], 
-        selectedSize: item.sizes[0], 
+        selectedColor: firstWishlistColor,
+        selectedSize: firstWishlistSize,
         quantity: 1
       };
       
@@ -40,8 +45,8 @@ const ItemCard = ({ item, onNavigate }) => {
     } else {
       dispatch(removeItem({
         id: item.id,
-        color: item.colors[0],
-        size: item.sizes[0] 
+        color: firstWishlistColor,
+        size: firstWishlistSize 
       }));
     }
     
@@ -104,7 +109,7 @@ const ItemCard = ({ item, onNavigate }) => {
 
         <div>
           <h3 className="text-xs leading-tight">{item.name}</h3>
-          <div className="text-xs text-gray-500 mt-2">{item.colors.length} Color{item.colors.length > 1 ? 's' : ''}</div>
+          <div className="text-xs text-gray-500 mt-2">{colorCount} Color{colorCount > 1 ? 's' : ''}</div>
           
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">

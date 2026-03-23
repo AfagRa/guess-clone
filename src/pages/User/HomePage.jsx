@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import '../../styles/homepage.css';
 import ItemsGrid from '../../components/User/ProductDetailsComponents/ItemsGrid';
-import { products } from '../../data/products';
+import { useProducts } from '../../hooks/useProducts';
 import HeroSection from '../../components/User/HomePageComponents/HeroSection';
 import CategoryScroller from '../../components/User/HomePageComponents/CategoryScroller';
 import GallerySection from '../../components/User/HomePageComponents/GallerySection';
@@ -31,6 +31,8 @@ const HomePage = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
+  const { products, loading } = useProducts({});
+
   const curatedForYou = products.slice(0,10)
 
   const handleVideo = () => {
@@ -52,15 +54,19 @@ const HomePage = () => {
           <CategoryGrid />
           <SecondCategoryScroller videoRef={videoRef} isPlaying={isPlaying} handleVideo={handleVideo} />
 
-          <ItemsGrid
-            title={<h2 className="text-center mb-5 mt-10 text-md sm:text-xl md:text-2xl lg:text-4xl font-normal">Curated Just for You</h2>}
-            products={curatedForYou} 
-            height={"400px"} 
-            showPrice={true} 
-            maxWidth={"auto"}
-            onAddToBasket={handleAddToBasket}
-            basketItems={basketItems}
-          />
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <ItemsGrid
+              title={<h2 className="text-center mb-5 mt-10 text-md sm:text-xl md:text-2xl lg:text-4xl font-normal">Curated Just for You</h2>}
+              products={curatedForYou} 
+              height={"400px"} 
+              showPrice={true} 
+              maxWidth={"auto"}
+              onAddToBasket={handleAddToBasket}
+              basketItems={basketItems}
+            />
+          )}
         </div>
       </div>
 

@@ -1,28 +1,53 @@
 import { useParams } from "react-router"
-import { products } from "../../data/products"
+import { useProducts } from "../../hooks/useProducts"
 import ProductImageGallery from "../../components/User/ProductDetailsComponents/ProductImageGallery"
 import ProductInfo from "../../components/User/ProductDetailsComponents/ProductInfo"
 import ProductRating from "../../components/User/ProductDetailsComponents/ProductRating"
 import ItemsGrid from "../../components/User/ProductDetailsComponents/ItemsGrid"
 import { useState, useEffect } from "react"
 import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5"
+import { apiFetch } from "../../services/api"
 
 const DetailsPage = () => {
   const {id} = useParams()
-  const product = products.find(elm => elm.id == id)
-
-  if (!product) return <div>Product not found</div>
-
-  const relatedProducts = products.filter(item => (item.categoryPath == product.categoryPath || item.tags?.some(tag => product.tags?.includes(tag)))).slice(0,10)
-  const recentlyViewed = JSON.parse(localStorage.getItem("recently-viewed") || "[]")
-  const productImages = product.imagesByColor
-
-  const [selectedColor, setSelectedColor] = useState(Object.keys(productImages)[0])
+  const { products, loading: productsLoading } = useProducts({})
+  const [product, setProduct] = useState(null)
+  const [loadingProduct, setLoadingProduct] = useState(true)
+  const [productError, setProductError] = useState(null)
+  const [selectedColor, setSelectedColor] = useState('')
 
   useEffect(() => {
     window.scrollTo(0,0)
-    if (productImages && Object.keys(productImages).length > 0) setSelectedColor(Object.keys(productImages)[0]) 
+    setLoadingProduct(true)
+    setProductError(null)
+    setProduct(null)
+
+    const fetchProduct = async () => {
+      try {
+        const res = await apiFetch(`/products/${id}`)
+        setProduct(res?.data ?? null)
+      } catch (e) {
+        setProductError(e?.message || 'Request failed')
+      } finally {
+        setLoadingProduct(false)
+      }
+    }
+
+    fetchProduct()
   }, [id])
+
+  useEffect(() => {
+    if (!product?.imagesByColor) return
+    const keys = Object.keys(product.imagesByColor)
+    if (keys.length > 0) setSelectedColor(keys[0])
+  }, [product])
+
+  if (loadingProduct) return <div>Loading...</div>
+  if (!product || productError) return <div>Product not found</div>
+
+  const relatedProducts = products.filter(item => (item.categoryPath == product.categoryPath || item.tags?.some(tag => product.tags?.includes(tag)))).slice(0,10)
+  const recentlyViewed = JSON.parse(localStorage.getItem("recently-viewed") || "[]")
+  const productImages = product.imagesByColor ?? {}
 
   const renderStars = (rating) => {
     const stars = []
@@ -49,26 +74,34 @@ const DetailsPage = () => {
           
           <div className="w-full md:sticky md:top-5 h-fit md:w-1/2 lg:w-1/3 pt-10">
             <ProductInfo product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} renderStars={renderStars} />
-            <ItemsGrid 
-              title="Wear With" 
-              products={relatedProducts.slice(0, 3)} 
-              height="180px"
-              maxWidth="33%"
-              showPrice={false}
-            />
+            {productsLoading ? (
+              <div>Loading...</div>
+            ) : (
+              <ItemsGrid 
+                title="Wear With" 
+                products={relatedProducts.slice(0, 3)} 
+                height="180px"
+                maxWidth="33%"
+                showPrice={false}
+              />
+            )}
           </div>
         </div>
 
         <ProductRating  product={product} renderStars={renderStars} />
 
         <div className="mb-10">
-          <ItemsGrid 
-            title="You might also like" 
-            products={relatedProducts} 
-            height="400px" 
-            showPrice={true}
-            maxWidth="auto"
-          />
+          {productsLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <ItemsGrid 
+              title="You might also like" 
+              products={relatedProducts} 
+              height="400px" 
+              showPrice={true}
+              maxWidth="auto"
+            />
+          )}
         </div>
         
         <ItemsGrid 

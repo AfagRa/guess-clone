@@ -1,25 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CiSearch, CiHeart } from "react-icons/ci";
 import UserNavbarMobile from './UserNavbarMobile';
 import UserNavbarDesktop from './UserNavbarDesktop';
 import BasketDropdown from './BasketDropdown';
 import Banner from './HomePageComponents/Banner';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { PiBagThin } from 'react-icons/pi';
 import { useSelector, useDispatch } from 'react-redux';
 import { hideBasketDropdown, showBasketDropdown } from '../../store/basketSlice';
+import { setSearchQuery, activateSearch, deactivateSearch } from '../../store/searchSlice';
+import { logout } from '../../store/authSlice';
+import { apiFetch } from '../../services/api';
 
 const UserNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [showInput, setShowInput] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const basketItems = useSelector(state => state.basket.items);
+  const showBasket = useSelector(state => state.basket.showDropdown);
+  const { user, isAuthenticated } = useSelector(state => state.auth);
+  const totalItemsCount = basketItems.reduce((total, item) => total + item.quantity, 0);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY < lastScrollY || currentScrollY < 100) setIsVisible(true);
       else setIsVisible(false);   
-      
       setLastScrollY(currentScrollY);
     };
 
@@ -27,15 +40,7 @@ const UserNavbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const basketItems = useSelector(state => state.basket.items);
-  const showBasket = useSelector(state => state.basket.showDropdown);
-  const totalItemsCount = basketItems.reduce((total, item) => total + item.quantity, 0);
-
   const handleMouseEnterBasket = () => {dispatch(showBasketDropdown())}
-
   const handleMouseLeaveBasket = () => {dispatch(hideBasketDropdown())}
 
   useEffect(() => {
@@ -43,10 +48,51 @@ const UserNavbar = () => {
       const timer = setTimeout(() => {
         dispatch(hideBasketDropdown());
       }, 3000);
-
       return () => clearTimeout(timer);
     }
   }, [showBasket, dispatch]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSearchClick = () => {
+    if (!showInput) {
+      setShowInput(true);
+    } else if (inputValue.trim()) {
+      dispatch(setSearchQuery(inputValue));
+      dispatch(activateSearch());
+      navigate('/women/clothing/view-all');
+    }
+  };
+
+  const handleLogoClick = () => {
+    setShowInput(false);
+    setInputValue('');
+    dispatch(deactivateSearch());
+    navigate('/');
+  };
+
+  const userInitial = () => {
+    const n = user?.name?.trim() || user?.email?.trim() || '';
+    if (!n) return '?';
+    return n.charAt(0).toUpperCase();
+  };
+
+  const handleSignOut = async () => {
+    setUserMenuOpen(false);
+    try {
+      await apiFetch('/auth/logout', { method: 'POST', body: JSON.stringify({}) });
+    } catch {
+    }
+    dispatch(logout());
+  };
 
   return (
     <>
@@ -56,17 +102,75 @@ const UserNavbar = () => {
         
         <nav className="flex items-center justify-between px-3.5 py-2 relative">
           <div className="flex gap-12">
-            <a href="/" className="flex items-center">
+            <button onClick={handleLogoClick} className="flex items-center">
               <img className="w-auto h-5" src="https://www.guess.com/on/demandware.static/Sites-guess_us-Site/-/default/dw9bbf66d2/images/logo-guess-header.svg" alt="guess-logo" />
-            </a>
+            </button>
             <UserNavbarDesktop />
           </div>
           
           <div className="flex items-center justify-center space-x-6">
             <div className="flex items-center">
-              {/* <button className="cursor-pointer p-2">
-                <CiSearch className="w-5 h-5" />
-              </button> */}
+              <div className="flex items-center">
+                {showInput && (
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Search products..."
+                    className="border border-gray-300 rounded-md px-3 py-1 text-sm mr-2 w-48"
+                  />
+                )}
+                <button onClick={handleSearchClick} className="cursor-pointer p-2">
+                  <CiSearch className="w-5 h-5" />
+                </button>
+              </div>
+
+              {isAuthenticated ? (
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    type="button"
+                    onClick={() => setUserMenuOpen((o) => !o)}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-medium text-white"
+                    aria-expanded={userMenuOpen}
+                    aria-haspopup="true"
+                  >
+                    {userInitial()}
+                  </button>
+                  {userMenuOpen && (
+                    <div className="absolute right-0 top-full z-50 mt-1 min-w-[10rem] border border-gray-200 bg-white py-1 text-xs shadow-sm">
+                      <Link
+                        to="/profile"
+                        className="block px-3 py-2 hover:bg-gray-50"
+                        onClick={() => setUserMenuOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      <Link
+                        to="/profile?tab=orders"
+                        className="block px-3 py-2 hover:bg-gray-50"
+                        onClick={() => setUserMenuOpen(false)}
+                      >
+                        Orders
+                      </Link>
+                      <button
+                        type="button"
+                        className="w-full px-3 py-2 text-left hover:bg-gray-50"
+                        onClick={handleSignOut}
+                      >
+                        Sign out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="inline-block text-xs underline"
+                >
+                  Sign in
+                </Link>
+              )}
+
               <button className="cursor-pointer p-2">
                 <CiHeart onClick={()=> navigate('/wishlist')} className="w-5 h-5" />
               </button>

@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
-import { products } from "../../data/products";
+import { useProducts } from "../../hooks/useProducts";
 import EmptyWishlist from "../../components/User/WishlistPageComponents/EmptyWishlist";
 import WishlistGrid from "../../components/User/WishlistPageComponents/WishlistGrid";
 import ItemsGrid from "../../components/User/ProductDetailsComponents/ItemsGrid";
 
 const WishlistPage = () => {
   const favoriteItems = useSelector(state => state.wishlist.items)
+  const { products, loading } = useProducts({})
 
   const getTotalItems = () => {
     return favoriteItems.reduce((total, item) => total + item.quantity, 0);
@@ -27,21 +28,27 @@ const WishlistPage = () => {
       }
 
       <div className={`space-y-12 mt-10 max-w-3xl lg:max-w-5xl mx-auto`}>
-        <ItemsGrid 
-          title="Top picks for you" 
-          products={randomItems} 
-          height="300px" 
-          showPrice={true}
-          maxWidth="auto"
-        />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            <ItemsGrid 
+              title="Top picks for you" 
+              products={randomItems} 
+              height="300px" 
+              showPrice={true}
+              maxWidth="auto"
+            />
 
-        <ItemsGrid 
-          title="You might also like" 
-          products={relevantItems} 
-          height="300px" 
-          showPrice={true}
-          maxWidth="auto"
-        />
+            <ItemsGrid 
+              title="You might also like" 
+              products={relevantItems} 
+              height="300px" 
+              showPrice={true}
+              maxWidth="auto"
+            />
+          </>
+        )}
       </div>
     </div>
   )

@@ -5,11 +5,15 @@ import FilterSidebar from "../../components/User/ProductsPageComponents/FilterSi
 import ProductGrid from "../../components/User/ProductsPageComponents/ProductGrid"
 import CategoryHeader from "../../components/User/ProductsPageComponents/CategoryHeader"
 import { allCategories } from "../../data/categories"
-import { products } from "../../data/products"
+import { useProducts } from "../../hooks/useProducts"
 
 const ProductsPage = () => {
   const params = useParams()
   const navigate = useNavigate()
+  
+  // Redux selectors with safe defaults
+  const searchQuery = useSelector(state => state.search?.query || '')
+  const isSearchActive = useSelector(state => state.search?.isActive || false)
   
   const path = [params.main, ...params['*'].split('/')]
   const [maincat, subcat, ...rest] = path
@@ -34,6 +38,8 @@ const ProductsPage = () => {
   ]
 
   useEffect(() => {
+    if (isSearchActive) return; // Don't redirect during search
+    
     const urlPathLength = path.length
     
     if (urlPathLength === 2) {
@@ -48,7 +54,9 @@ const ProductsPage = () => {
         return
       }
     }
-  }, [path, navigate, maincat, subcat, catlist])
+  }, [path, navigate, maincat, subcat, catlist, isSearchActive])
+
+  const { products, loading } = useProducts({})
 
   const [appliedFilters, setAppliedFilters] = useState({
     colors: [],
@@ -58,22 +66,51 @@ const ProductsPage = () => {
     features: []
   })
 
-   const filteredByCategory = products.filter(product => {
-      const productPath = product.categoryPath
-      const urlPathLength = path.length
-      if (productPath[0] !== maincat) return false
-      if (productPath[1] !== subcat) return false
-      if (urlPathLength === 2) return true
-      if (urlPathLength === 3) {
-        if (path[2] === 'view-all') return true
-        return productPath[2] === path[2]
-      }
-      if (urlPathLength === 4) {
-        if (path[3] === 'view-all') return productPath[2] === path[2]
-        return productPath[2] === path[2] && productPath[3] === path[3]
-      }  
-      return false
+  // Search function - simple and direct
+  const searchProducts = (query) => {
+    if (!query.trim()) return []
+    
+    const searchWords = query.toLowerCase().split(' ')
+    
+    return products.filter(product => {
+      const searchableText = [
+        product.name || '',
+        product.description || '',
+        ...(product.features || [])
+      ].join(' ').toLowerCase()
+      
+      // Check if ANY search word appears in the searchable text
+      return searchWords.some(word => searchableText.includes(word))
     })
+  }
+
+  // Get base products - either search results or category products
+  const getBaseProducts = () => {
+    if (isSearchActive && searchQuery) {
+      // Return search results
+      return searchProducts(searchQuery)
+    } else {
+      // Normal category filtering
+      return products.filter(product => {
+        const productPath = product.categoryPath
+        const urlPathLength = path.length
+        if (productPath[0] !== maincat) return false
+        if (productPath[1] !== subcat) return false
+        if (urlPathLength === 2) return true
+        if (urlPathLength === 3) {
+          if (path[2] === 'view-all') return true
+          return productPath[2] === path[2]
+        }
+        if (urlPathLength === 4) {
+          if (path[3] === 'view-all') return productPath[2] === path[2]
+          return productPath[2] === path[2] && productPath[3] === path[3]
+        }  
+        return false
+      });
+    }
+  };
+
+  const filteredByCategory = getBaseProducts();
 
   const filteredProducts = filteredByCategory.filter(product => {
     if (appliedFilters.colors.length > 0 && !product.colors.some(c => appliedFilters.colors.includes(c))) return false
@@ -93,6 +130,11 @@ const ProductsPage = () => {
   })
 
   const getCurrentCategoryTitle = () => {
+    if (isSearchActive && searchQuery) {
+      return searchQuery; // Show search query as title (without quotes)
+    }
+
+    // Normal category title logic
     const [main, section, item, subItem] = path
     
     if (subItem && subItem !== 'view-all') {
@@ -112,17 +154,20 @@ const ProductsPage = () => {
   return (
     <section className="px-3 py-2 grid gap-x-4 grid-cols-1 lg:grid-cols-[20%_auto] xl:grid-cols-[16%_auto] grid-rows-[30px_auto]">
       <div className="col-span-full row-start-1 row-end-2">
-        <CategoryHeader path={path} />
+        <CategoryHeader 
+          path={isSearchActive ? ['search'] : path} 
+          searchQuery={isSearchActive ? searchQuery : null}
+        />
       </div>
 
       <div className="hidden lg:block col-start-1 col-end-2 row-start-2 row-end-3">
         <FilterSidebar
-          mainCategory={mainCategory}
-          section={section}
-          cat={path[2]}
-          subcat2={path[3]}
-          catlist={catlist}
-          allSections={mainCategory?.dropdown?.sections || []}
+          mainCategory={isSearchActive ? null : mainCategory}
+          section={isSearchActive ? null : section}
+          cat={isSearchActive ? null : path[2]}
+          subcat2={isSearchActive ? null : path[3]}
+          catlist={isSearchActive ? [] : catlist}
+          allSections={isSearchActive ? [] : (mainCategory?.dropdown?.sections || [])}
           products={filteredByCategory}
           appliedFilters={appliedFilters}
           setAppliedFilters={setAppliedFilters}
@@ -132,23 +177,27 @@ const ProductsPage = () => {
       </div>
 
       <div className="col-start-1 lg:col-start-2 col-end-2 row-start-2 row-end-3" >
-        <ProductGrid
-          products={filteredProducts}
-          matchedItemsCount={filteredProducts.length}
-          categoryTitle={getCurrentCategoryTitle()}
-          onNavigate={(path) => navigate(path)}
-          mainCategory={mainCategory}
-          section={section}
-          cat={path[2]}
-          subcat2={path[3]}
-          catlist={catlist}
-          allSections={mainCategory?.dropdown?.sections || []}
-          filteredByCategory={filteredByCategory}
-          appliedFilters={appliedFilters}
-          setAppliedFilters={setAppliedFilters}
-          colorOptions={colorOptions}
-          subcat={section} 
-        />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <ProductGrid
+            products={filteredProducts}
+            matchedItemsCount={filteredProducts.length}
+            categoryTitle={getCurrentCategoryTitle()}
+            onNavigate={(path) => navigate(path)}
+            mainCategory={isSearchActive ? null : mainCategory}
+            section={isSearchActive ? null : section}
+            cat={isSearchActive ? null : path[2]}
+            subcat2={isSearchActive ? null : path[3]}
+            catlist={isSearchActive ? [] : catlist}
+            allSections={isSearchActive ? [] : (mainCategory?.dropdown?.sections || [])}
+            filteredByCategory={filteredByCategory}
+            appliedFilters={appliedFilters}
+            setAppliedFilters={setAppliedFilters}
+            colorOptions={colorOptions}
+            subcat={isSearchActive ? null : section} 
+          />
+        )}
       </div>
     </section>
   )

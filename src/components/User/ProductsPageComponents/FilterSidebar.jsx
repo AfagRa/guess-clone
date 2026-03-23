@@ -7,6 +7,7 @@ import PriceFilter from "./PriceFilter"
 import DiscountFilter from "./DiscountFilter"
 import FeatureFilter from "./FeatureFilter"
 import AllAppliedFilters from "./AllAppliedFilters"
+import { allCategories } from "../../../data/categories"
 
 const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, allSections, appliedFilters, setAppliedFilters, matchedItemsCount, colorOptions}) => {
   const availableColors = [...new Set(products.flatMap(p => p.colors))]
@@ -25,6 +26,9 @@ const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, 
     }))
   }
 
+  // Check if we're in search mode (mainCategory is null during search)
+  const isSearchMode = !mainCategory
+
   return (
     <div className="w-full px-0.5">
       <div className="max-lg:hidden border-b border-gray-800 py-1">
@@ -37,14 +41,26 @@ const FilterSidebar = ({mainCategory, section, cat, subcat2, catlist, products, 
 
         {openFilters['category'] && (
           <div className="mt-1 space-y-2 pl-4">
-            <CategoryFilter 
-              maincat={mainCategory} 
-              subcat={section} 
-              cat={cat}
-              subcat2={subcat2}
-              catlist={catlist}
-              allSections={allSections} 
-            />
+            {isSearchMode ? (
+              // During search, show all main categories
+              <div className="space-y-1">
+                {allCategories.map(category => (
+                  <div key={category.slug} className="text-sm text-gray-600 hover:text-black cursor-pointer">
+                    {category.name}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              // Normal category filter
+              <CategoryFilter 
+                maincat={mainCategory} 
+                subcat={section} 
+                cat={cat}
+                subcat2={subcat2}
+                catlist={catlist}
+                allSections={allSections} 
+              />
+            )}
           </div>
         )}
       </div>

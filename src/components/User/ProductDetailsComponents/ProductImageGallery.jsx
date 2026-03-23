@@ -10,6 +10,7 @@ const ProductImageGallery = ({ images, productName}) => {
   const modalRef = useRef(null)
   const isScrollingRef = useRef(false)
   const snapTimeoutRef = useRef(null)
+  const safeImages = images ?? [];
 
   const sections = [
     { positionId: 0, title: "Section 1" },
@@ -37,12 +38,13 @@ const ProductImageGallery = ({ images, productName}) => {
 
   const handleSnapScroll = () => {
     if (!modalRef.current || isScrollingRef.current) return;
+    if (!safeImages.length) return;
 
     const container = modalRef.current;
     const scrollTop = container.scrollTop;
     const imageHeight = container.clientHeight;
     const currentImageIndex = Math.round(scrollTop / imageHeight);
-    const clampedIndex = Math.max(0, Math.min(currentImageIndex, images.length - 1));
+    const clampedIndex = Math.max(0, Math.min(currentImageIndex, safeImages.length - 1));
     
     if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current)
 
@@ -85,7 +87,7 @@ const ProductImageGallery = ({ images, productName}) => {
   return (
     <>
       <div id="product-grid" className="relative flex overflow-x-auto md:grid md:grid-cols-1 max-md:w-full lg:grid-cols-2 scrollbar-hide">
-        {images.map((img, i) => (
+        {safeImages.map((img, i) => (
           <img
             key={i}
             src={img}
@@ -113,7 +115,7 @@ const ProductImageGallery = ({ images, productName}) => {
           </button>
 
           <div className="flex flex-wrap justify-center gap-0 max-w-7xl min-h-screen mx-auto">
-            {images.map((img, i) => (
+            {safeImages.map((img, i) => (
               <img
                 key={i}
                 src={img}

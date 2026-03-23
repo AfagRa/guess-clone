@@ -53,51 +53,57 @@ const BasketDropdown = ({ showBasket }) => {
             ) : (
               <>
                 <div className="max-h-40 overflow-y-auto mb-4">
-                  {basketItems.map((item) => (
-                    <div key={`${item.id}-${item.selectedColor}-${item.selectedSize}`} className="flex gap-3 py-4">
-                      <div className="h-20 w-auto flex-shrink-0">
-                        <img
-                          src={item.imagesByColor?.[item.selectedColor]?.[0] || ""}
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                  {basketItems.map((item) => {
+                    const imagesByColor = item.imagesByColor ?? item.images_by_color ?? {};
+                    const currentImages = (item.selectedColor && imagesByColor[item.selectedColor]) ? imagesByColor[item.selectedColor] : Object.values(imagesByColor)[0] ?? [];
+                    const mainImage = currentImages[0] ?? '';
+
+                    return (
+                      <div key={`${item.id}-${item.selectedColor}-${item.selectedSize}`} className="flex gap-3 py-4">
+                        <div className="h-20 w-auto flex-shrink-0">
+                          <img
+                            src={mainImage}
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       
-                      <div className="flex-1 min-w-0">
-                        <div className="flex justify-between items-start mb-1">
-                          <h4 className="text-sm font-medium  leading-tight">
-                            {item.name}
-                          </h4>
-                          <button className="ml-2 flex-shrink-0 cursor-pointer">
-                            <IoMdClose onClick={() => handleRemove(item.id, item.selectedColor || item.color, item.selectedSize || item.size)} />
-                          </button>
-                        </div>
-                        
-                        <div className="text-xs text-gray-600 mb-1">
-                          <p>Color: {item.color}</p>
-                          <p>Size: {item.size}</p>
-                          <p>Qty: {item.quantity}</p>
-                        </div>
-                        
-                        <div className="flex items-center justify-between">
-                          <div className="text-sm font-medium">
-                            {item.salePrice ? (
-                              <div className="flex items-center gap-2">
-                                <span>{formatPrice(item.salePrice)}</span>
-                                <span className="text-gray-400 line-through text-xs">{formatPrice(item.price)}</span>
-                              </div>
-                            ) : (
-                              <span>{formatPrice(item.price)}</span>
-                            )}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex justify-between items-start mb-1">
+                            <h4 className="text-sm font-medium  leading-tight">
+                              {item.name}
+                            </h4>
+                            <button className="ml-2 flex-shrink-0 cursor-pointer">
+                              <IoMdClose onClick={() => handleRemove(item.id, item.selectedColor || item.color, item.selectedSize || item.size)} />
+                            </button>
+                          </div>
+                          
+                          <div className="text-xs text-gray-600 mb-1">
+                            <p>Color: {item.color}</p>
+                            <p>Size: {item.size}</p>
+                            <p>Qty: {item.quantity}</p>
+                          </div>
+                          
+                          <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium">
+                              {item.salePrice ? (
+                                <div className="flex items-center gap-2">
+                                  <span>{formatPrice(item.salePrice)}</span>
+                                  <span className="text-gray-400 line-through text-xs">{formatPrice(item.price)}</span>
+                                </div>
+                              ) : (
+                                <span>{formatPrice(item.price)}</span>
+                              )}
+                            </div>
+                          </div>
+                          
+                          <div className="text-right text-sm font-medium mt-1">
+                            Item total: {formatPrice((item.salePrice || item.price) * item.quantity)}
                           </div>
                         </div>
-                        
-                        <div className="text-right text-sm font-medium mt-1">
-                          Item total: {formatPrice((item.salePrice || item.price) * item.quantity)}
-                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 <div className="mb-4 pb-4 border-b border-gray-300">

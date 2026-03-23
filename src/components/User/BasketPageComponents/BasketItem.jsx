@@ -5,13 +5,18 @@ import OptionsModal from './OptionsModal';
 
 const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor, selectedSize: initialSize, onQuantityChange, onRemove, onMoveToFavorites}) => {
   const [quantity, setQuantity] = useState(initialQuantity);
-  const [selectedColor, setSelectedColor] = useState(initialColor || Object.keys(product.imagesByColor)[0]);
+  const imagesByColor = product.imagesByColor ?? product.images_by_color ?? {};
+  const firstColor = product.colors?.[0];
+  const defaultColor = initialColor || firstColor || Object.keys(imagesByColor)[0] || '';
+  const [selectedColor, setSelectedColor] = useState(defaultColor);
   const [selectedSize, setSelectedSize] = useState(initialSize || product.sizes[0]);
   const [shippingOption, setShippingOption] = useState('ship');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const currentPrice = product.salePrice || product.price;
   const totalPrice = currentPrice * quantity;
+  const selectedImages = (selectedColor && imagesByColor[selectedColor]) ? imagesByColor[selectedColor] : Object.values(imagesByColor)[0] ?? [];
+  const mainImage = selectedImages[0] ?? '';
 
   const handleQuantityChange = (newQuantity) => {
     if (newQuantity >= 1) {
@@ -55,7 +60,7 @@ const BasketItem = ({ product, initialQuantity = 1, selectedColor: initialColor,
         </button>
         <div className="h-60 w-auto flex-shrink-0">
           <img
-            src={product.imagesByColor[selectedColor][0]}
+            src={mainImage}
             alt={product.name}
             className="h-40 sm:w-full sm:h-full object-cover"
           />

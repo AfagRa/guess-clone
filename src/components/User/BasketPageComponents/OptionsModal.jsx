@@ -72,7 +72,7 @@ const OptionsModal = ({ isOpen, onClose, product, currentColor, currentSize, cur
             Color: <span className="capitalize">{selectedColor}</span>
           </h4>
           <div className="flex gap-4">
-            {Object.keys(product.imagesByColor).map((color) => (
+            {Object.keys(product.imagesByColor ?? product.images_by_color ?? {}).map((color) => (
               <button
                 key={color}
                 onClick={() => setSelectedColor(color)}
