@@ -47,8 +47,8 @@ const ProductsPage = () => {
       return
     }
     
-    if (urlPathLength === 3 && path[2] !== 'view-all') {
-      const item = catlist.find(c => c.slug === path[2])
+    if (urlPathLength == 3 && path[2] !== 'view-all') {
+      const item = catlist.find(c => c.slug == path[2])
       if (item && item.subcategories && item.subcategories.length > 0) {
         navigate(`/${maincat}/${subcat}/${path[2]}/view-all`)
         return
@@ -79,18 +79,14 @@ const ProductsPage = () => {
         ...(product.features || [])
       ].join(' ').toLowerCase()
       
-      // Check if ANY search word appears in the searchable text
       return searchWords.some(word => searchableText.includes(word))
     })
   }
 
-  // Get base products - either search results or category products
   const getBaseProducts = () => {
     if (isSearchActive && searchQuery) {
-      // Return search results
       return searchProducts(searchQuery)
     } else {
-      // Normal category filtering
       return products.filter(product => {
         const productPath = product.categoryPath
         const urlPathLength = path.length
@@ -131,10 +127,9 @@ const ProductsPage = () => {
 
   const getCurrentCategoryTitle = () => {
     if (isSearchActive && searchQuery) {
-      return searchQuery; // Show search query as title (without quotes)
+      return searchQuery;
     }
 
-    // Normal category title logic
     const [main, section, item, subItem] = path
     
     if (subItem && subItem !== 'view-all') {

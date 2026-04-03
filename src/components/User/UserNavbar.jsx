@@ -103,7 +103,7 @@ const UserNavbar = () => {
         <nav className="flex items-center justify-between px-3.5 py-2 relative">
           <div className="flex gap-12">
             <button onClick={handleLogoClick} className="flex items-center">
-              <img className="w-auto h-5" src="https://www.guess.com/on/demandware.static/Sites-guess_us-Site/-/default/dw9bbf66d2/images/logo-guess-header.svg" alt="guess-logo" />
+              <img className="w-auto h-5 cursor-pointer" src="https://cdn.worldvectorlogo.com/logos/guess-2.svg" alt="guess-logo" />
             </button>
             <UserNavbarDesktop />
           </div>
