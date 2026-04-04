@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../../store/authSlice';
 import { apiFetch } from '../../services/api';
@@ -13,7 +13,6 @@ const AdminLoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, token } = useSelector((s) => s.auth);
 
@@ -42,7 +41,7 @@ const AdminLoginPage = () => {
         return;
       }
       dispatch(setCredentials({ user: u, token: t }));
-      navigate('/admin/dashboard', { replace: true });
+      window.location.href = '/admin/dashboard';
     } catch (err) {
       setError(err.body?.message || err.message || 'Login failed');
     } finally {

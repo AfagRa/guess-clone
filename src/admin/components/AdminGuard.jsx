@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router';
 import { useSelector } from 'react-redux';
 
@@ -13,15 +14,23 @@ const loadUserFromLocalStorage = () => {
   }
 };
 
-const resolveSession = (reduxUser, reduxToken) => {
-  const user = reduxUser ?? loadUserFromLocalStorage();
-  const token = reduxToken ?? localStorage.getItem('auth_token');
-  return { user, token };
-};
-
 export const AdminGuard = () => {
   const { user: reduxUser, token: reduxToken } = useSelector((s) => s.auth);
-  const { user, token } = resolveSession(reduxUser, reduxToken);
+  const [checked, setChecked] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fromRedux = reduxUser;
+    const fromStorage = loadUserFromLocalStorage();
+    setUser(fromRedux ?? fromStorage ?? null);
+    setChecked(true);
+  }, [reduxUser, reduxToken]);
+
+  if (!checked) {
+    return null;
+  }
+
+  const token = reduxToken ?? localStorage.getItem('auth_token');
 
   if (!user) {
     return <Navigate to="/login" replace />;
@@ -34,7 +43,21 @@ export const AdminGuard = () => {
 
 export const SuperAdminGuard = () => {
   const { user: reduxUser, token: reduxToken } = useSelector((s) => s.auth);
-  const { user, token } = resolveSession(reduxUser, reduxToken);
+  const [checked, setChecked] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fromRedux = reduxUser;
+    const fromStorage = loadUserFromLocalStorage();
+    setUser(fromRedux ?? fromStorage ?? null);
+    setChecked(true);
+  }, [reduxUser, reduxToken]);
+
+  if (!checked) {
+    return null;
+  }
+
+  const token = reduxToken ?? localStorage.getItem('auth_token');
 
   if (!user) {
     return <Navigate to="/login" replace />;
