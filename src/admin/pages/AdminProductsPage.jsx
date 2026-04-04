@@ -15,6 +15,27 @@ const splitCsv = (s) =>
     .map((x) => x.trim())
     .filter(Boolean);
 
+const genImageRowId = () =>
+  `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+
+const ibcToRowsState = (ibc) => {
+  const o = {};
+  if (ibc && typeof ibc === 'object' && !Array.isArray(ibc)) {
+    for (const [color, urls] of Object.entries(ibc)) {
+      const arr = Array.isArray(urls) ? urls : urls != null ? [urls] : [];
+      const rows = arr
+        .filter((u) => u != null && String(u).trim() !== '')
+        .map((u) => ({
+          id: genImageRowId(),
+          mode: 'link',
+          value: String(u).trim(),
+        }));
+      o[color] = rows.length ? rows : [{ id: genImageRowId(), mode: 'link', value: '' }];
+    }
+  }
+  return o;
+};
+
 const emptyForm = () => ({
   name: '',
   slug: '',
@@ -22,10 +43,10 @@ const emptyForm = () => ({
   price: '',
   sale_price: '',
   percentage_off: '0',
-  brand: 'GUESS',
   material: '',
   description: '',
   availability: 'In Stock',
+  quantity: '0',
   tags: '',
   colors: '',
   sizes: '',
@@ -45,6 +66,8 @@ const AdminProductsPage = () => {
   const [form, setForm] = useState(emptyForm());
   const [saving, setSaving] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+  const [imageRowsByColor, setImageRowsByColor] = useState({});
+  const [activeImageColor, setActiveImageColor] = useState('');
 
   const load = useCallback(async () => {
     setError('');
@@ -80,9 +103,46 @@ const AdminProductsPage = () => {
     return meta.last_page ?? meta.lastPage ?? 1;
   }, [meta]);
 
+  const imageColorTabs = useMemo(() => {
+    const a = splitCsv(form.colors);
+    const b = Object.keys(imageRowsByColor);
+    const seen = new Set();
+    const out = [];
+    for (const x of [...a, ...b]) {
+      if (!x || seen.has(x)) continue;
+      seen.add(x);
+      out.push(x);
+    }
+    return out;
+  }, [form.colors, imageRowsByColor]);
+
+  useEffect(() => {
+    if (!modalOpen) return;
+    const cols = splitCsv(form.colors);
+    if (!cols.length) return;
+    setImageRowsByColor((prev) => {
+      const next = { ...prev };
+      let changed = false;
+      for (const c of cols) {
+        if (!next[c]) {
+          next[c] = [{ id: genImageRowId(), mode: 'link', value: '' }];
+          changed = true;
+        }
+      }
+      return changed ? next : prev;
+    });
+  }, [form.colors, modalOpen]);
+
+  useEffect(() => {
+    if (!modalOpen || !imageColorTabs.length) return;
+    if (!imageColorTabs.includes(activeImageColor)) setActiveImageColor(imageColorTabs[0]);
+  }, [modalOpen, imageColorTabs, activeImageColor]);
+
   const openCreate = () => {
     setEditingId(null);
     setForm(emptyForm());
+    setImageRowsByColor({});
+    setActiveImageColor('');
     setModalOpen(true);
   };
 
@@ -92,6 +152,19 @@ const AdminProductsPage = () => {
     const tags = row.tags;
     const colors = row.colors;
     const sizes = row.sizes;
+    const rawAv = String(row.availability || 'In Stock').trim().toLowerCase();
+    const availability = rawAv === 'out of stock' ? 'Out of Stock' : 'In Stock';
+    const ibc = row.images_by_color ?? row.imagesByColor;
+    const cols = splitCsv(
+      Array.isArray(colors) ? colors.join(', ') : typeof colors === 'string' ? colors : '',
+    );
+    const rowMap = ibcToRowsState(ibc);
+    const allColors = [...new Set([...cols, ...Object.keys(rowMap)])];
+    for (const c of allColors) {
+      if (!rowMap[c]) rowMap[c] = [{ id: genImageRowId(), mode: 'link', value: '' }];
+    }
+    setImageRowsByColor(rowMap);
+    setActiveImageColor(allColors[0] || '');
     setForm({
       name: row.name || '',
       slug: row.slug || '',
@@ -99,10 +172,10 @@ const AdminProductsPage = () => {
       price: row.price != null ? String(row.price) : '',
       sale_price: row.sale_price != null || row.salePrice != null ? String(row.sale_price ?? row.salePrice) : '',
       percentage_off: String(row.percentage_off ?? row.percentageOff ?? 0),
-      brand: row.brand || 'GUESS',
       material: row.material || '',
       description: row.description || '',
-      availability: row.availability || 'In Stock',
+      availability,
+      quantity: String(row.quantity ?? row.stock_quantity ?? row.stock ?? 0),
       tags: Array.isArray(tags) ? tags.join(', ') : '',
       colors: Array.isArray(colors) ? colors.join(', ') : '',
       sizes: Array.isArray(sizes) ? sizes.join(', ') : '',
@@ -117,6 +190,9 @@ const AdminProductsPage = () => {
     const price = parseFloat(form.price);
     const sale = form.sale_price.trim() ? parseFloat(form.sale_price) : null;
     const pct = parseInt(form.percentage_off, 10) || 0;
+    const qty = parseInt(form.quantity, 10);
+    const quantity =
+      form.availability === 'In Stock' ? (Number.isFinite(qty) ? qty : 0) : 0;
     return {
       name,
       slug,
@@ -124,15 +200,24 @@ const AdminProductsPage = () => {
       price: Number.isFinite(price) ? price : 0,
       sale_price: sale,
       percentage_off: pct,
-      brand: form.brand.trim() || 'GUESS',
+      brand: 'GUESS',
       material: form.material.trim() || null,
       eco_info: null,
       description: form.description.trim() || null,
       availability: form.availability.trim() || 'In Stock',
+      quantity,
       tags: splitCsv(form.tags),
       colors: splitCsv(form.colors),
       sizes: splitCsv(form.sizes),
       category_path: splitCsv(form.category_path),
+      images_by_color: Object.fromEntries(
+        Object.entries(imageRowsByColor)
+          .map(([color, rows]) => [
+            color,
+            (rows || []).map((r) => r.value.trim()).filter(Boolean),
+          ])
+          .filter(([, urls]) => urls.length > 0),
+      ),
     };
   };
 
@@ -178,6 +263,77 @@ const AdminProductsPage = () => {
       if (!editingId) next.slug = slugify(v);
       return next;
     });
+  };
+
+  const updateImageRow = (color, rowId, patch) => {
+    setImageRowsByColor((prev) => ({
+      ...prev,
+      [color]: (prev[color] || []).map((row) =>
+        row.id === rowId ? { ...row, ...patch } : row,
+      ),
+    }));
+  };
+
+  const addImageRow = (color) => {
+    setImageRowsByColor((prev) => ({
+      ...prev,
+      [color]: [...(prev[color] || []), { id: genImageRowId(), mode: 'link', value: '' }],
+    }));
+  };
+
+  const removeImageRow = (color, rowId) => {
+    setImageRowsByColor((prev) => ({
+      ...prev,
+      [color]: (prev[color] || []).filter((r) => r.id !== rowId),
+    }));
+  };
+
+  const onImageFileSelected = async (color, rowId, file) => {
+    if (!file || !file.type.startsWith('image/')) return;
+    updateImageRow(color, rowId, { uploading: true, uploadError: '' });
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      const token = localStorage.getItem('auth_token');
+      const res = await fetch('http://localhost:8000/api/admin/products/upload-image', {
+        method: 'POST',
+        headers: { Authorization: 'Bearer ' + token, Accept: 'application/json' },
+        body: formData,
+      });
+      let data = {};
+      try {
+        data = await res.json();
+      } catch {
+        data = {};
+      }
+      const url = data?.data?.url ?? '';
+      if (!res.ok) {
+        updateImageRow(color, rowId, {
+          uploading: false,
+          uploadError:
+            data?.message || data?.error || (typeof data === 'string' ? data : '') || 'Upload failed',
+        });
+        return;
+      }
+      if (!url) {
+        updateImageRow(color, rowId, {
+          uploading: false,
+          uploadError: 'Upload failed',
+        });
+        return;
+      }
+      updateImageRow(color, rowId, {
+        value: url,
+        mode: 'device',
+        uploading: false,
+        uploadError: '',
+      });
+    } catch (e) {
+      updateImageRow(color, rowId, {
+        uploading: false,
+        uploadError: e?.message || 'Upload failed',
+      });
+    }
   };
 
   return (
@@ -243,12 +399,16 @@ const AdminProductsPage = () => {
                 <td className="px-4 py-3 capitalize">{row.gender}</td>
                 <td className="px-4 py-3">{row.availability}</td>
                 <td className="px-4 py-3 text-right space-x-2 whitespace-nowrap">
-                  <button type="button" className="underline" onClick={() => openEdit(row)}>
+                  <button
+                    type="button"
+                    className="underline cursor-pointer"
+                    onClick={() => openEdit(row)}
+                  >
                     Edit
                   </button>
                   <button
                     type="button"
-                    className="underline text-red-700"
+                    className="underline text-red-700 cursor-pointer"
                     onClick={() => setDeleteId(row.id)}
                   >
                     Delete
@@ -286,7 +446,7 @@ const AdminProductsPage = () => {
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40">
-          <div className="bg-white border border-gray-200 w-full max-w-lg max-h-[90vh] overflow-y-auto p-6">
+          <div className="bg-white border border-gray-200 w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6">
             <h2 className="text-md font-medium mb-4">{editingId ? 'Edit product' : 'New product'}</h2>
             <form onSubmit={handleSave} className="space-y-3 text-sm">
               <div>
@@ -297,6 +457,7 @@ const AdminProductsPage = () => {
                   required
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. Classic Logo T-Shirt</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Slug</label>
@@ -306,6 +467,7 @@ const AdminProductsPage = () => {
                   required
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. classic-logo-t-shirt</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Gender</label>
@@ -318,6 +480,7 @@ const AdminProductsPage = () => {
                   <option value="men">men</option>
                   <option value="unisex">unisex</option>
                 </select>
+                <p className="text-xs text-gray-500 mt-0.5">e.g. women</p>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -330,6 +493,7 @@ const AdminProductsPage = () => {
                     required
                     className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                   />
+                  <p className="text-xs text-gray-500 mt-0.5">e.g. 49.99</p>
                 </div>
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">Sale price</label>
@@ -340,6 +504,7 @@ const AdminProductsPage = () => {
                     onChange={(e) => setForm((f) => ({ ...f, sale_price: e.target.value }))}
                     className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                   />
+                  <p className="text-xs text-gray-500 mt-0.5">e.g. 39.99</p>
                 </div>
               </div>
               <div>
@@ -350,14 +515,7 @@ const AdminProductsPage = () => {
                   onChange={(e) => setForm((f) => ({ ...f, percentage_off: e.target.value }))}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
-              </div>
-              <div>
-                <label className="block text-xs text-gray-600 mb-1">Brand</label>
-                <input
-                  value={form.brand}
-                  onChange={(e) => setForm((f) => ({ ...f, brand: e.target.value }))}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. 20</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Material</label>
@@ -366,15 +524,39 @@ const AdminProductsPage = () => {
                   onChange={(e) => setForm((f) => ({ ...f, material: e.target.value }))}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. 100% Cotton</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Availability</label>
-                <input
+                <select
                   value={form.availability}
-                  onChange={(e) => setForm((f) => ({ ...f, availability: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((f) => ({
+                      ...f,
+                      availability: e.target.value,
+                      quantity: e.target.value === 'In Stock' ? f.quantity : '0',
+                    }))
+                  }
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                >
+                  <option value="In Stock">In Stock</option>
+                  <option value="Out of Stock">Out of Stock</option>
+                </select>
+                <p className="text-xs text-gray-500 mt-0.5">e.g. In Stock</p>
               </div>
+              {form.availability === 'In Stock' && (
+                <div>
+                  <label className="block text-xs text-gray-600 mb-1">Quantity</label>
+                  <input
+                    type="number"
+                    min="0"
+                    value={form.quantity}
+                    onChange={(e) => setForm((f) => ({ ...f, quantity: e.target.value }))}
+                    className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
+                  />
+                  <p className="text-xs text-gray-500 mt-0.5">e.g. 120</p>
+                </div>
+              )}
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Description</label>
                 <textarea
@@ -383,6 +565,9 @@ const AdminProductsPage = () => {
                   rows={3}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black resize-y"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">
+                  e.g. Soft crew neck tee with embroidered logo at the chest.
+                </p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Tags (comma separated)</label>
@@ -391,6 +576,7 @@ const AdminProductsPage = () => {
                   onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. casual, summer, essentials</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Colors (comma separated)</label>
@@ -399,6 +585,7 @@ const AdminProductsPage = () => {
                   onChange={(e) => setForm((f) => ({ ...f, colors: e.target.value }))}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. Black, White, Navy</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Sizes (comma separated)</label>
@@ -407,6 +594,7 @@ const AdminProductsPage = () => {
                   onChange={(e) => setForm((f) => ({ ...f, sizes: e.target.value }))}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. S, M, L, XL</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Category path (comma separated)</label>
@@ -415,6 +603,153 @@ const AdminProductsPage = () => {
                   onChange={(e) => setForm((f) => ({ ...f, category_path: e.target.value }))}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. Women, Tops, Tees</p>
+              </div>
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">Images by color</label>
+                {!imageColorTabs.length ? (
+                  <p className="text-xs text-gray-500">
+                    Add at least one color above to manage images per color.
+                  </p>
+                ) : (
+                  <div className="border border-gray-200 p-3 space-y-3">
+                    <div className="flex flex-wrap gap-1">
+                      {imageColorTabs.map((c) => (
+                        <button
+                          key={c}
+                          type="button"
+                          onClick={() => setActiveImageColor(c)}
+                          className={`text-xs px-2 py-1 border ${
+                            activeImageColor === c
+                              ? 'bg-black text-white border-black'
+                              : 'border-gray-300 hover:bg-gray-50'
+                          }`}
+                        >
+                          {c}
+                        </button>
+                      ))}
+                    </div>
+                    {activeImageColor &&
+                      (imageRowsByColor[activeImageColor] || []).length === 0 && (
+                        <div className="flex justify-end">
+                          <button
+                            type="button"
+                            onClick={() => addImageRow(activeImageColor)}
+                            className="text-sm w-8 h-8 border border-gray-300 leading-none hover:bg-gray-50"
+                            aria-label="Add image"
+                          >
+                            +
+                          </button>
+                        </div>
+                      )}
+                    {activeImageColor &&
+                      (imageRowsByColor[activeImageColor] || []).map((row) => (
+                      <div
+                        key={row.id}
+                        className="flex flex-wrap items-start gap-2 border-b border-gray-100 pb-3 last:border-0 last:pb-0"
+                      >
+                        <div className="flex gap-1 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              updateImageRow(activeImageColor, row.id, {
+                                mode: 'link',
+                                value: row.value.startsWith('data:') ? '' : row.value,
+                                uploading: false,
+                                uploadError: '',
+                              })
+                            }
+                            className={`text-xs px-2 py-0.5 border ${
+                              row.mode === 'link'
+                                ? 'bg-gray-900 text-white border-gray-900'
+                                : 'border-gray-300 hover:bg-gray-50'
+                            }`}
+                          >
+                            Link
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              updateImageRow(activeImageColor, row.id, {
+                                mode: 'device',
+                                value: /^https?:\/\//i.test(row.value) ? '' : row.value,
+                                uploading: false,
+                                uploadError: '',
+                              })
+                            }
+                            className={`text-xs px-2 py-0.5 border ${
+                              row.mode === 'device'
+                                ? 'bg-gray-900 text-white border-gray-900'
+                                : 'border-gray-300 hover:bg-gray-50'
+                            }`}
+                          >
+                            Device
+                          </button>
+                        </div>
+                        <div className="flex-1 min-w-[200px] space-y-1">
+                          {row.mode === 'link' ? (
+                            <input
+                              type="text"
+                              value={row.value.startsWith('data:') ? '' : row.value}
+                              onChange={(e) =>
+                                updateImageRow(activeImageColor, row.id, { value: e.target.value })
+                              }
+                              placeholder="https://example.com/image.jpg"
+                              className="w-full border border-gray-300 px-2 py-1.5 text-sm focus:outline-none focus:border-black"
+                            />
+                          ) : (
+                            <>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                disabled={row.uploading}
+                                onChange={(e) => {
+                                  const f = e.target.files?.[0];
+                                  e.target.value = '';
+                                  if (f) onImageFileSelected(activeImageColor, row.id, f);
+                                }}
+                                className="w-full text-xs"
+                              />
+                              {row.uploading && (
+                                <p className="text-xs text-gray-500 mt-1">Uploading…</p>
+                              )}
+                              {row.uploadError && (
+                                <p className="text-xs text-red-600 mt-1">{row.uploadError}</p>
+                              )}
+                              {!row.uploading &&
+                                row.value &&
+                                /^https?:\/\//i.test(row.value) && (
+                                  <img
+                                    src={row.value}
+                                    alt=""
+                                    className="max-h-[60px] w-auto object-contain border border-gray-200 mt-1"
+                                  />
+                                )}
+                            </>
+                          )}
+                        </div>
+                        <div className="flex gap-1 shrink-0 items-center">
+                          <button
+                            type="button"
+                            onClick={() => addImageRow(activeImageColor)}
+                            className="text-sm w-7 h-7 border border-gray-300 leading-none hover:bg-gray-50"
+                            aria-label="Add image"
+                          >
+                            +
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => removeImageRow(activeImageColor, row.id)}
+                            className="text-sm w-7 h-7 border border-gray-300 leading-none hover:bg-gray-50 text-red-700"
+                            aria-label="Remove image"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               <div className="flex gap-3 pt-2">
                 <button

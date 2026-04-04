@@ -13,7 +13,6 @@ export const apiFetch = async (endpoint, options = {}) => {
   const res = await fetch(`${API_BASE}${endpoint}`, {
     ...options,
     headers,
-    credentials: 'include',
   });
   const text = await res.text();
   let body = null;
