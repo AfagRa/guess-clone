@@ -68,6 +68,7 @@ const AdminProductsPage = () => {
   const [deleteId, setDeleteId] = useState(null);
   const [imageRowsByColor, setImageRowsByColor] = useState({});
   const [activeImageColor, setActiveImageColor] = useState('');
+  const [committedColors, setCommittedColors] = useState([]);
 
   const load = useCallback(async () => {
     setError('');
@@ -104,7 +105,7 @@ const AdminProductsPage = () => {
   }, [meta]);
 
   const imageColorTabs = useMemo(() => {
-    const a = splitCsv(form.colors);
+    const a = committedColors.length > 0 ? committedColors : splitCsv(form.colors);
     const b = Object.keys(imageRowsByColor);
     const seen = new Set();
     const out = [];
@@ -114,7 +115,7 @@ const AdminProductsPage = () => {
       out.push(x);
     }
     return out;
-  }, [form.colors, imageRowsByColor]);
+  }, [committedColors, form.colors, imageRowsByColor]);
 
   useEffect(() => {
     if (!modalOpen) return;
@@ -144,6 +145,7 @@ const AdminProductsPage = () => {
     setImageRowsByColor({});
     setActiveImageColor('');
     setModalOpen(true);
+    setCommittedColors([]);
   };
 
   const openEdit = (row) => {
@@ -181,6 +183,7 @@ const AdminProductsPage = () => {
       sizes: Array.isArray(sizes) ? sizes.join(', ') : '',
       category_path: Array.isArray(cp) ? cp.join(', ') : typeof cp === 'string' ? cp : '',
     });
+    setCommittedColors(Array.isArray(colors) ? colors : splitCsv(colors || ''));
     setModalOpen(true);
   };
 
@@ -582,9 +585,16 @@ const AdminProductsPage = () => {
                 <label className="block text-xs text-gray-600 mb-1">Colors (comma separated)</label>
                 <input
                   value={form.colors}
-                  onChange={(e) => setForm((f) => ({ ...f, colors: e.target.value }))}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setForm((f) => ({ ...f, colors: val }));
+                    if (val.endsWith(',') || val.endsWith(' ')) {
+                      setCommittedColors(splitCsv(val));
+                    }
+                  }}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
+
                 <p className="text-xs text-gray-500 mt-0.5">e.g. Black, White, Navy</p>
               </div>
               <div>
