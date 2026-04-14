@@ -105,7 +105,7 @@ const AdminProductsPage = () => {
   }, [meta]);
 
   const imageColorTabs = useMemo(() => {
-    const a = committedColors.length > 0 ? committedColors : splitCsv(form.colors);
+    const a = committedColors.length > 0 ? committedColors : [];
     const b = Object.keys(imageRowsByColor);
     const seen = new Set();
     const out = [];
@@ -115,16 +115,15 @@ const AdminProductsPage = () => {
       out.push(x);
     }
     return out;
-  }, [committedColors, form.colors, imageRowsByColor]);
+  }, [committedColors, imageRowsByColor]);
 
   useEffect(() => {
     if (!modalOpen) return;
-    const cols = splitCsv(form.colors);
-    if (!cols.length) return;
+    if (!committedColors.length) return;
     setImageRowsByColor((prev) => {
       const next = { ...prev };
       let changed = false;
-      for (const c of cols) {
+      for (const c of committedColors) {
         if (!next[c]) {
           next[c] = [{ id: genImageRowId(), mode: 'link', value: '' }];
           changed = true;
@@ -132,7 +131,7 @@ const AdminProductsPage = () => {
       }
       return changed ? next : prev;
     });
-  }, [form.colors, modalOpen]);
+  }, [committedColors, modalOpen]);
 
   useEffect(() => {
     if (!modalOpen || !imageColorTabs.length) return;
@@ -144,8 +143,8 @@ const AdminProductsPage = () => {
     setForm(emptyForm());
     setImageRowsByColor({});
     setActiveImageColor('');
-    setModalOpen(true);
     setCommittedColors([]);
+    setModalOpen(true);
   };
 
   const openEdit = (row) => {
@@ -157,15 +156,14 @@ const AdminProductsPage = () => {
     const rawAv = String(row.availability || 'In Stock').trim().toLowerCase();
     const availability = rawAv === 'out of stock' ? 'Out of Stock' : 'In Stock';
     const ibc = row.images_by_color ?? row.imagesByColor;
-    const cols = splitCsv(
-      Array.isArray(colors) ? colors.join(', ') : typeof colors === 'string' ? colors : '',
-    );
+    const cols = Array.isArray(colors) ? colors : splitCsv(typeof colors === 'string' ? colors : '');
     const rowMap = ibcToRowsState(ibc);
     const allColors = [...new Set([...cols, ...Object.keys(rowMap)])];
     for (const c of allColors) {
       if (!rowMap[c]) rowMap[c] = [{ id: genImageRowId(), mode: 'link', value: '' }];
     }
     setImageRowsByColor(rowMap);
+    setCommittedColors(allColors);
     setActiveImageColor(allColors[0] || '');
     setForm({
       name: row.name || '',
@@ -183,7 +181,6 @@ const AdminProductsPage = () => {
       sizes: Array.isArray(sizes) ? sizes.join(', ') : '',
       category_path: Array.isArray(cp) ? cp.join(', ') : typeof cp === 'string' ? cp : '',
     });
-    setCommittedColors(Array.isArray(colors) ? colors : splitCsv(colors || ''));
     setModalOpen(true);
   };
 
@@ -194,8 +191,7 @@ const AdminProductsPage = () => {
     const sale = form.sale_price.trim() ? parseFloat(form.sale_price) : null;
     const pct = parseInt(form.percentage_off, 10) || 0;
     const qty = parseInt(form.quantity, 10);
-    const quantity =
-      form.availability === 'In Stock' ? (Number.isFinite(qty) ? qty : 0) : 0;
+    const quantity = form.availability === 'In Stock' ? (Number.isFinite(qty) ? qty : 0) : 0;
     return {
       name,
       slug,
@@ -268,6 +264,13 @@ const AdminProductsPage = () => {
     });
   };
 
+  const onColorsChange = (val) => {
+    setForm((f) => ({ ...f, colors: val }));
+    if (val.endsWith(',') || val.endsWith(' ')) {
+      setCommittedColors(splitCsv(val));
+    }
+  };
+
   const updateImageRow = (color, rowId, patch) => {
     setImageRowsByColor((prev) => ({
       ...prev,
@@ -298,44 +301,26 @@ const AdminProductsPage = () => {
       const formData = new FormData();
       formData.append('image', file);
       const token = localStorage.getItem('auth_token');
-      const res = await fetch('http://localhost:8000/api/admin/products/upload-image', {
+      const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+      const res = await fetch(`${apiBase}/admin/products/upload-image`, {
         method: 'POST',
         headers: { Authorization: 'Bearer ' + token, Accept: 'application/json' },
         body: formData,
       });
       let data = {};
-      try {
-        data = await res.json();
-      } catch {
-        data = {};
-      }
+      try { data = await res.json(); } catch { data = {}; }
       const url = data?.data?.url ?? '';
       if (!res.ok) {
-        updateImageRow(color, rowId, {
-          uploading: false,
-          uploadError:
-            data?.message || data?.error || (typeof data === 'string' ? data : '') || 'Upload failed',
-        });
+        updateImageRow(color, rowId, { uploading: false, uploadError: data?.message || 'Upload failed' });
         return;
       }
       if (!url) {
-        updateImageRow(color, rowId, {
-          uploading: false,
-          uploadError: 'Upload failed',
-        });
+        updateImageRow(color, rowId, { uploading: false, uploadError: 'Upload failed' });
         return;
       }
-      updateImageRow(color, rowId, {
-        value: url,
-        mode: 'device',
-        uploading: false,
-        uploadError: '',
-      });
+      updateImageRow(color, rowId, { value: url, mode: 'device', uploading: false, uploadError: '' });
     } catch (e) {
-      updateImageRow(color, rowId, {
-        uploading: false,
-        uploadError: e?.message || 'Upload failed',
-      });
+      updateImageRow(color, rowId, { uploading: false, uploadError: e?.message || 'Upload failed' });
     }
   };
 
@@ -354,10 +339,7 @@ const AdminProductsPage = () => {
           />
           <button
             type="button"
-            onClick={() => {
-              setSearch(searchInput);
-              setPage(1);
-            }}
+            onClick={() => { setSearch(searchInput); setPage(1); }}
             className="text-sm border border-gray-300 px-3 py-1.5 hover:bg-gray-50"
           >
             Search
@@ -402,18 +384,10 @@ const AdminProductsPage = () => {
                 <td className="px-4 py-3 capitalize">{row.gender}</td>
                 <td className="px-4 py-3">{row.availability}</td>
                 <td className="px-4 py-3 text-right space-x-2 whitespace-nowrap">
-                  <button
-                    type="button"
-                    className="underline cursor-pointer"
-                    onClick={() => openEdit(row)}
-                  >
+                  <button type="button" className="underline cursor-pointer" onClick={() => openEdit(row)}>
                     Edit
                   </button>
-                  <button
-                    type="button"
-                    className="underline text-red-700 cursor-pointer"
-                    onClick={() => setDeleteId(row.id)}
-                  >
+                  <button type="button" className="underline text-red-700 cursor-pointer" onClick={() => setDeleteId(row.id)}>
                     Delete
                   </button>
                 </td>
@@ -425,23 +399,11 @@ const AdminProductsPage = () => {
 
       {meta && lastPage > 1 && (
         <div className="flex items-center gap-3 mt-4 text-sm">
-          <button
-            type="button"
-            disabled={page <= 1}
-            className="underline disabled:opacity-40"
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-          >
+          <button type="button" disabled={page <= 1} className="underline disabled:opacity-40" onClick={() => setPage((p) => Math.max(1, p - 1))}>
             Previous
           </button>
-          <span>
-            Page {page} of {lastPage}
-          </span>
-          <button
-            type="button"
-            disabled={page >= lastPage}
-            className="underline disabled:opacity-40"
-            onClick={() => setPage((p) => p + 1)}
-          >
+          <span>Page {page} of {lastPage}</span>
+          <button type="button" disabled={page >= lastPage} className="underline disabled:opacity-40" onClick={() => setPage((p) => p + 1)}>
             Next
           </button>
         </div>
@@ -454,307 +416,132 @@ const AdminProductsPage = () => {
             <form onSubmit={handleSave} className="space-y-3 text-sm">
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Name</label>
-                <input
-                  value={form.name}
-                  onChange={(e) => onNameChange(e.target.value)}
-                  required
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                <input value={form.name} onChange={(e) => onNameChange(e.target.value)} required className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                 <p className="text-xs text-gray-500 mt-0.5">e.g. Classic Logo T-Shirt</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Slug</label>
-                <input
-                  value={form.slug}
-                  onChange={(e) => setForm((f) => ({ ...f, slug: e.target.value }))}
-                  required
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                <input value={form.slug} onChange={(e) => setForm((f) => ({ ...f, slug: e.target.value }))} required className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                 <p className="text-xs text-gray-500 mt-0.5">e.g. classic-logo-t-shirt</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Gender</label>
-                <select
-                  value={form.gender}
-                  onChange={(e) => setForm((f) => ({ ...f, gender: e.target.value }))}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                >
+                <select value={form.gender} onChange={(e) => setForm((f) => ({ ...f, gender: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black">
                   <option value="women">women</option>
                   <option value="men">men</option>
                   <option value="unisex">unisex</option>
                 </select>
-                <p className="text-xs text-gray-500 mt-0.5">e.g. women</p>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">Price</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={form.price}
-                    onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))}
-                    required
-                    className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                  />
+                  <input type="number" step="0.01" value={form.price} onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))} required className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                   <p className="text-xs text-gray-500 mt-0.5">e.g. 49.99</p>
                 </div>
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">Sale price</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={form.sale_price}
-                    onChange={(e) => setForm((f) => ({ ...f, sale_price: e.target.value }))}
-                    className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                  />
+                  <input type="number" step="0.01" value={form.sale_price} onChange={(e) => setForm((f) => ({ ...f, sale_price: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                   <p className="text-xs text-gray-500 mt-0.5">e.g. 39.99</p>
                 </div>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Percentage off</label>
-                <input
-                  type="number"
-                  value={form.percentage_off}
-                  onChange={(e) => setForm((f) => ({ ...f, percentage_off: e.target.value }))}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                <input type="number" value={form.percentage_off} onChange={(e) => setForm((f) => ({ ...f, percentage_off: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                 <p className="text-xs text-gray-500 mt-0.5">e.g. 20</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Material</label>
-                <input
-                  value={form.material}
-                  onChange={(e) => setForm((f) => ({ ...f, material: e.target.value }))}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                <input value={form.material} onChange={(e) => setForm((f) => ({ ...f, material: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                 <p className="text-xs text-gray-500 mt-0.5">e.g. 100% Cotton</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Availability</label>
-                <select
-                  value={form.availability}
-                  onChange={(e) =>
-                    setForm((f) => ({
-                      ...f,
-                      availability: e.target.value,
-                      quantity: e.target.value === 'In Stock' ? f.quantity : '0',
-                    }))
-                  }
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                >
+                <select value={form.availability} onChange={(e) => setForm((f) => ({ ...f, availability: e.target.value, quantity: e.target.value === 'In Stock' ? f.quantity : '0' }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black">
                   <option value="In Stock">In Stock</option>
                   <option value="Out of Stock">Out of Stock</option>
                 </select>
-                <p className="text-xs text-gray-500 mt-0.5">e.g. In Stock</p>
               </div>
               {form.availability === 'In Stock' && (
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">Quantity</label>
-                  <input
-                    type="number"
-                    min="0"
-                    value={form.quantity}
-                    onChange={(e) => setForm((f) => ({ ...f, quantity: e.target.value }))}
-                    className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                  />
+                  <input type="number" min="0" value={form.quantity} onChange={(e) => setForm((f) => ({ ...f, quantity: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                   <p className="text-xs text-gray-500 mt-0.5">e.g. 120</p>
                 </div>
               )}
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Description</label>
-                <textarea
-                  value={form.description}
-                  onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-                  rows={3}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black resize-y"
-                />
-                <p className="text-xs text-gray-500 mt-0.5">
-                  e.g. Soft crew neck tee with embroidered logo at the chest.
-                </p>
+                <textarea value={form.description} onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))} rows={3} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black resize-y" />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. Soft crew neck tee with embroidered logo at the chest.</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Tags (comma separated)</label>
-                <input
-                  value={form.tags}
-                  onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                <input value={form.tags} onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                 <p className="text-xs text-gray-500 mt-0.5">e.g. casual, summer, essentials</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Colors (comma separated)</label>
                 <input
                   value={form.colors}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    setForm((f) => ({ ...f, colors: val }));
-                    if (val.endsWith(',') || val.endsWith(' ')) {
-                      setCommittedColors(splitCsv(val));
-                    }
-                  }}
+                  onChange={(e) => onColorsChange(e.target.value)}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
-
-                <p className="text-xs text-gray-500 mt-0.5">e.g. Black, White, Navy</p>
+                <p className="text-xs text-gray-500 mt-0.5">e.g. Black, White, Navy — type a comma after each color</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Sizes (comma separated)</label>
-                <input
-                  value={form.sizes}
-                  onChange={(e) => setForm((f) => ({ ...f, sizes: e.target.value }))}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
+                <input value={form.sizes} onChange={(e) => setForm((f) => ({ ...f, sizes: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
                 <p className="text-xs text-gray-500 mt-0.5">e.g. S, M, L, XL</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Category path (comma separated)</label>
-                <input
-                  value={form.category_path}
-                  onChange={(e) => setForm((f) => ({ ...f, category_path: e.target.value }))}
-                  className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
-                />
-                <p className="text-xs text-gray-500 mt-0.5">e.g. Women, Tops, Tees</p>
+                <input value={form.category_path} onChange={(e) => setForm((f) => ({ ...f, category_path: e.target.value }))} className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black" />
+                <p className="text-xs text-gray-500 mt-0.5">e.g. women, apparel, tops</p>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">Images by color</label>
                 {!imageColorTabs.length ? (
-                  <p className="text-xs text-gray-500">
-                    Add at least one color above to manage images per color.
-                  </p>
+                  <p className="text-xs text-gray-500">Type a color name followed by a comma to manage images per color.</p>
                 ) : (
                   <div className="border border-gray-200 p-3 space-y-3">
                     <div className="flex flex-wrap gap-1">
                       {imageColorTabs.map((c) => (
-                        <button
-                          key={c}
-                          type="button"
-                          onClick={() => setActiveImageColor(c)}
-                          className={`text-xs px-2 py-1 border ${
-                            activeImageColor === c
-                              ? 'bg-black text-white border-black'
-                              : 'border-gray-300 hover:bg-gray-50'
-                          }`}
-                        >
+                        <button key={c} type="button" onClick={() => setActiveImageColor(c)} className={`text-xs px-2 py-1 border ${activeImageColor === c ? 'bg-black text-white border-black' : 'border-gray-300 hover:bg-gray-50'}`}>
                           {c}
                         </button>
                       ))}
                     </div>
-                    {activeImageColor &&
-                      (imageRowsByColor[activeImageColor] || []).length === 0 && (
-                        <div className="flex justify-end">
-                          <button
-                            type="button"
-                            onClick={() => addImageRow(activeImageColor)}
-                            className="text-sm w-8 h-8 border border-gray-300 leading-none hover:bg-gray-50"
-                            aria-label="Add image"
-                          >
-                            +
-                          </button>
-                        </div>
-                      )}
-                    {activeImageColor &&
-                      (imageRowsByColor[activeImageColor] || []).map((row) => (
-                      <div
-                        key={row.id}
-                        className="flex flex-wrap items-start gap-2 border-b border-gray-100 pb-3 last:border-0 last:pb-0"
-                      >
+                    {activeImageColor && (imageRowsByColor[activeImageColor] || []).length === 0 && (
+                      <div className="flex justify-end">
+                        <button type="button" onClick={() => addImageRow(activeImageColor)} className="text-sm w-8 h-8 border border-gray-300 leading-none hover:bg-gray-50">+</button>
+                      </div>
+                    )}
+                    {activeImageColor && (imageRowsByColor[activeImageColor] || []).map((row) => (
+                      <div key={row.id} className="flex flex-wrap items-start gap-2 border-b border-gray-100 pb-3 last:border-0 last:pb-0">
                         <div className="flex gap-1 shrink-0">
-                          <button
-                            type="button"
-                            onClick={() =>
-                              updateImageRow(activeImageColor, row.id, {
-                                mode: 'link',
-                                value: row.value.startsWith('data:') ? '' : row.value,
-                                uploading: false,
-                                uploadError: '',
-                              })
-                            }
-                            className={`text-xs px-2 py-0.5 border ${
-                              row.mode === 'link'
-                                ? 'bg-gray-900 text-white border-gray-900'
-                                : 'border-gray-300 hover:bg-gray-50'
-                            }`}
-                          >
+                          <button type="button" onClick={() => updateImageRow(activeImageColor, row.id, { mode: 'link', value: row.value.startsWith('data:') ? '' : row.value, uploading: false, uploadError: '' })} className={`text-xs px-2 py-0.5 border ${row.mode === 'link' ? 'bg-gray-900 text-white border-gray-900' : 'border-gray-300 hover:bg-gray-50'}`}>
                             Link
                           </button>
-                          <button
-                            type="button"
-                            onClick={() =>
-                              updateImageRow(activeImageColor, row.id, {
-                                mode: 'device',
-                                value: /^https?:\/\//i.test(row.value) ? '' : row.value,
-                                uploading: false,
-                                uploadError: '',
-                              })
-                            }
-                            className={`text-xs px-2 py-0.5 border ${
-                              row.mode === 'device'
-                                ? 'bg-gray-900 text-white border-gray-900'
-                                : 'border-gray-300 hover:bg-gray-50'
-                            }`}
-                          >
+                          <button type="button" onClick={() => updateImageRow(activeImageColor, row.id, { mode: 'device', value: /^https?:\/\//i.test(row.value) ? '' : row.value, uploading: false, uploadError: '' })} className={`text-xs px-2 py-0.5 border ${row.mode === 'device' ? 'bg-gray-900 text-white border-gray-900' : 'border-gray-300 hover:bg-gray-50'}`}>
                             Device
                           </button>
                         </div>
                         <div className="flex-1 min-w-[200px] space-y-1">
                           {row.mode === 'link' ? (
-                            <input
-                              type="text"
-                              value={row.value.startsWith('data:') ? '' : row.value}
-                              onChange={(e) =>
-                                updateImageRow(activeImageColor, row.id, { value: e.target.value })
-                              }
-                              placeholder="https://example.com/image.jpg"
-                              className="w-full border border-gray-300 px-2 py-1.5 text-sm focus:outline-none focus:border-black"
-                            />
+                            <input type="text" value={row.value.startsWith('data:') ? '' : row.value} onChange={(e) => updateImageRow(activeImageColor, row.id, { value: e.target.value })} placeholder="https://example.com/image.jpg" className="w-full border border-gray-300 px-2 py-1.5 text-sm focus:outline-none focus:border-black" />
                           ) : (
                             <>
-                              <input
-                                type="file"
-                                accept="image/*"
-                                disabled={row.uploading}
-                                onChange={(e) => {
-                                  const f = e.target.files?.[0];
-                                  e.target.value = '';
-                                  if (f) onImageFileSelected(activeImageColor, row.id, f);
-                                }}
-                                className="w-full text-xs"
-                              />
-                              {row.uploading && (
-                                <p className="text-xs text-gray-500 mt-1">Uploading…</p>
+                              <input type="file" accept="image/*" disabled={row.uploading} onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ''; if (f) onImageFileSelected(activeImageColor, row.id, f); }} className="w-full text-xs" />
+                              {row.uploading && <p className="text-xs text-gray-500 mt-1">Uploading…</p>}
+                              {row.uploadError && <p className="text-xs text-red-600 mt-1">{row.uploadError}</p>}
+                              {!row.uploading && row.value && /^https?:\/\//i.test(row.value) && (
+                                <img src={row.value} alt="" className="max-h-[60px] w-auto object-contain border border-gray-200 mt-1" />
                               )}
-                              {row.uploadError && (
-                                <p className="text-xs text-red-600 mt-1">{row.uploadError}</p>
-                              )}
-                              {!row.uploading &&
-                                row.value &&
-                                /^https?:\/\//i.test(row.value) && (
-                                  <img
-                                    src={row.value}
-                                    alt=""
-                                    className="max-h-[60px] w-auto object-contain border border-gray-200 mt-1"
-                                  />
-                                )}
                             </>
                           )}
                         </div>
                         <div className="flex gap-1 shrink-0 items-center">
-                          <button
-                            type="button"
-                            onClick={() => addImageRow(activeImageColor)}
-                            className="text-sm w-7 h-7 border border-gray-300 leading-none hover:bg-gray-50"
-                            aria-label="Add image"
-                          >
-                            +
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => removeImageRow(activeImageColor, row.id)}
-                            className="text-sm w-7 h-7 border border-gray-300 leading-none hover:bg-gray-50 text-red-700"
-                            aria-label="Remove image"
-                          >
-                            ×
-                          </button>
+                          <button type="button" onClick={() => addImageRow(activeImageColor)} className="text-sm w-7 h-7 border border-gray-300 leading-none hover:bg-gray-50">+</button>
+                          <button type="button" onClick={() => removeImageRow(activeImageColor, row.id)} className="text-sm w-7 h-7 border border-gray-300 leading-none hover:bg-gray-50 text-red-700">×</button>
                         </div>
                       </div>
                     ))}
@@ -762,18 +549,10 @@ const AdminProductsPage = () => {
                 )}
               </div>
               <div className="flex gap-3 pt-2">
-                <button
-                  type="submit"
-                  disabled={saving}
-                  className="bg-black text-white text-sm px-4 py-2 font-medium hover:bg-gray-900 disabled:opacity-50"
-                >
+                <button type="submit" disabled={saving} className="bg-black text-white text-sm px-4 py-2 font-medium hover:bg-gray-900 disabled:opacity-50">
                   {saving ? 'Saving…' : 'Save'}
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setModalOpen(false)}
-                  className="text-sm underline"
-                >
+                <button type="button" onClick={() => setModalOpen(false)} className="text-sm underline">
                   Cancel
                 </button>
               </div>
@@ -787,16 +566,8 @@ const AdminProductsPage = () => {
           <div className="bg-white border border-gray-200 p-6 max-w-sm w-full">
             <p className="text-sm mb-4">Delete this product?</p>
             <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={handleDelete}
-                className="bg-black text-white text-sm px-4 py-2 font-medium"
-              >
-                Delete
-              </button>
-              <button type="button" onClick={() => setDeleteId(null)} className="text-sm underline">
-                Cancel
-              </button>
+              <button type="button" onClick={handleDelete} className="bg-black text-white text-sm px-4 py-2 font-medium">Delete</button>
+              <button type="button" onClick={() => setDeleteId(null)} className="text-sm underline">Cancel</button>
             </div>
           </div>
         </div>
