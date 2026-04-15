@@ -119,18 +119,23 @@ const AdminProductsPage = () => {
 
   useEffect(() => {
     if (!modalOpen) return;
-    if (!committedColors.length) return;
+  
     setImageRowsByColor((prev) => {
-      const next = { ...prev };
-      let changed = false;
-      for (const c of committedColors) {
-        if (!next[c]) {
-          next[c] = [{ id: genImageRowId(), mode: 'link', value: '' }];
-          changed = true;
+      const next = {};
+      
+      for (const color of committedColors) {
+        if (prev[color]) {
+          next[color] = prev[color];
+        } else {
+          next[color] = [
+            { id: genImageRowId(), mode: 'link', value: '' }
+          ];
         }
       }
-      return changed ? next : prev;
+  
+      return next;
     });
+  
   }, [committedColors, modalOpen]);
 
   useEffect(() => {
