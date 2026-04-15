@@ -23,7 +23,9 @@ const UserNavbar = () => {
 
   const basketItems = useSelector(state => state.basket.items);
   const showBasket = useSelector(state => state.basket.showDropdown);
-  const { user, isAuthenticated } = useSelector(state => state.auth);
+  const authUser = useSelector((s) => s.auth?.user);
+  const isAuthenticated = useSelector((s) => s.auth?.isAuthenticated);
+  const user = authUser ?? JSON.parse(localStorage.getItem('auth_user') || 'null');
   const totalItemsCount = basketItems.reduce((total, item) => total + item.quantity, 0);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userMenuRef = useRef(null);

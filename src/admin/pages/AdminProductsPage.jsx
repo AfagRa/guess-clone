@@ -105,8 +105,8 @@ const AdminProductsPage = () => {
   }, [meta]);
 
   const imageColorTabs = useMemo(() => {
-    const a = committedColors.length > 0 ? committedColors : [];
-    const b = Object.keys(imageRowsByColor);
+    const a = splitCsv(committedColors.join(','));
+    const b = Object.keys(imageRowsByColor).map((x) => String(x || '').trim()).filter(Boolean);
     const seen = new Set();
     const out = [];
     for (const x of [...a, ...b]) {
@@ -483,6 +483,7 @@ const AdminProductsPage = () => {
                 <input
                   value={form.colors}
                   onChange={(e) => onColorsChange(e.target.value)}
+                  onBlur={(e) => setCommittedColors(splitCsv(e.target.value))}
                   className="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:border-black"
                 />
                 <p className="text-xs text-gray-500 mt-0.5">e.g. Black, White, Navy — type a comma after each color</p>
