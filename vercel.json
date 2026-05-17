@@ -1,6 +1,12 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)",
-      "destination": "http://207.154.227.149/api/$1" }
+    {
+      "source": "/api/(.*)",
+      "destination": "http://207.154.227.149/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
